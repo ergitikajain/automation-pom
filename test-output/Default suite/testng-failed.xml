@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
+  <test verbose="2" name="Default test">
+    <classes>
+      <class name="com.jukin.test.base.TestBaseSetup"/>
+      <class name="com.jukin.test.AppTest"/>
+      <class name="com.jukin.test.base.Login"/>
+      <class name="com.jukin.test.base.Test"/>
+      <class name="com.jukin.test.Test"/>
+      <class name="com.jukin.test.Login"/>
+      <class name="com.jukin.test.base.HomePage"/>
+      <class name="com.jukin.pageobjects.JunkinMediaLogin"/>
+      <class name="com.jukin.test.App"/>
+    </classes>
+  </test> <!-- Default test -->
+  <test name="Default test(failed)">
+    <classes>
+      <class name="com.jukin.test.Login">
+        <methods>
+          <include name="beforeSuite"/>
+          <include name="validateEmail"/>
+          <include name="validateLogo"/>
+          <include name="validatePhoneNumber"/>
+          <include name="validateLastName"/>
+          <include name="validateCompanyName"/>
+          <include name="validateFirstName"/>
+          <include name="matchStyles"/>
+          <include name="validateRateYourExperience"/>
+          <include name="validateSubmit"/>
+          <include name="validateWouldYouRecommendOptions"/>
+          <include name="validateMoto"/>
+          <include name="validateWouldYouRecommend"/>
+          <include name="validateHowDidYouHearAbout"/>
+        </methods>
+      </class> <!-- com.jukin.test.Login -->
+      <class name="com.jukin.test.base.Login">
+        <methods>
+          <include name="validateFirstName"/>
+          <include name="validateWouldYouRecommend"/>
+          <include name="validateEmail"/>
+          <include name="validateLastName"/>
+          <include name="validateLogo"/>
+          <include name="validateCompanyName"/>
+          <include name="validatePhoneNumber"/>
+          <include name="matchStyles"/>
+          <include name="validateHowDidYouHearAbout"/>
+          <include name="validateRateYourExperience"/>
+          <include name="validateWouldYouRecommendOptions"/>
+          <include name="validateSubmit"/>
+          <include name="validateMoto"/>
+        </methods>
+      </class> <!-- com.jukin.test.base.Login -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

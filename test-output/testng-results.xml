@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Page Object test" duration-ms="12478" started-at="2016-01-24T22:17:17Z" finished-at="2016-01-24T22:17:30Z">
+    <groups>
+    </groups>
+    <test name="sample test" duration-ms="12478" started-at="2016-01-24T22:17:17Z" finished-at="2016-01-24T22:17:30Z">
+      <class name="com.jukin.test.JukinMediaLoginTest">
+        <test-method status="PASS" signature="initializeTestBaseSetup(java.lang.String, java.lang.String)[pri:0, instance:com.jukin.test.JukinMediaLoginTest@7c24d892]" name="initializeTestBaseSetup" is-config="true" duration-ms="9352" started-at="2016-01-24T14:17:17Z" finished-at="2016-01-24T14:17:26Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[firefox]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[http://qatest.jukinmedia.com/#/]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initializeTestBaseSetup -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.jukin.test.JukinMediaLoginTest@7c24d892]" name="setUp" is-config="true" duration-ms="0" started-at="2016-01-24T14:17:26Z" finished-at="2016-01-24T14:17:26Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="loginTest()[pri:0, instance:com.jukin.test.JukinMediaLoginTest@7c24d892]" name="loginTest" duration-ms="668" started-at="2016-01-24T14:17:26Z" finished-at="2016-01-24T14:17:27Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginTest -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.jukin.test.JukinMediaLoginTest@7c24d892]" name="tearDown" is-config="true" duration-ms="2437" started-at="2016-01-24T14:17:27Z" finished-at="2016-01-24T14:17:30Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.jukin.test.JukinMediaLoginTest -->
+    </test> <!-- sample test -->
+  </suite> <!-- Page Object test -->
+</testng-results>
