@@ -150,23 +150,6 @@ public class JukinMediaForm {
 	}
 	
 	
-/*	public String getFirstNameGhostText() {
-		return CssHelper.getTextboxPlaceholder(firstNameTextbox);
-	}
-	
-	public String getFirstNameFontSize() {
-		return CssHelper.getFontSize(firstNameTextbox);
-	}
-	
-	public String getFirstNameFontFamily() {
-		return CssHelper.getFontFamily(firstNameTextbox);
-	}
-	
-	public String getFirstNameTextAlign() {
-		return CssHelper.getTextAlign(firstNameTextbox);
-	}
-	
-	
 	public String getFirstNameGhostText() {
 		return CssHelper.getTextboxPlaceholder(firstNameTextbox);
 	}
@@ -177,12 +160,61 @@ public class JukinMediaForm {
 	
 	public String getFirstNameFontFamily() {
 		return CssHelper.getFontFamily(firstNameTextbox);
-	}*/
+	}
 	
 	public String getFirstNameTextAlign() {
 		return CssHelper.getTextAlign(firstNameTextbox);
 	}
 	
 	
+	public String getLastNameGhostText() {
+		return CssHelper.getTextboxPlaceholder(lastNameTextbox);
+	}
+	
+	public String getLastNameFontSize() {
+		return CssHelper.getFontSize(lastNameTextbox);
+	}
+	
+	public String getLastNameFontFamily() {
+		return CssHelper.getFontFamily(lastNameTextbox);
+	}
+	
+	
+	public String getLastNameTextAlign() {
+		return CssHelper.getTextAlign(lastNameTextbox);
+	}
+	
+	public String getEmailGhostText() {
+		return CssHelper.getTextboxPlaceholder(emailTextbox);
+	}
+	
+	public String getEmailFontSize() {
+		return CssHelper.getFontSize(emailTextbox);
+	}
+	
+	public String getEmailFontFamily() {
+		return CssHelper.getFontFamily(emailTextbox);
+	}
+	
+	public String getEmailTextAlign() {
+		return CssHelper.getTextAlign(emailTextbox);
+	}
+	
+	
+	public String getPhoneNumberGhostText() {
+		return CssHelper.getTextboxPlaceholder(phoneNumberTextbox);
+	}
+	
+	public String getPhoneNumberFontSize() {
+		return CssHelper.getFontSize(phoneNumberTextbox);
+	}
+	
+	public String getPhoneNumberFontFamily() {
+		return CssHelper.getFontFamily(phoneNumberTextbox);
+	}
+	
+	public String getPhoneNumberTextAlign() {
+		return CssHelper.getTextAlign(phoneNumberTextbox);
+	}
 	
 }
