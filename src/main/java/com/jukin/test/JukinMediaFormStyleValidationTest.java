@@ -14,7 +14,7 @@ import com.jukin.test.base.TestBaseSetup;
 
 public class JukinMediaFormStyleValidationTest extends TestBaseSetup {
 
-	private static final String arialFontFamily = "Arial, sans-serif";
+	private static final String arialFontFamily = "Arial,sans-serif";
 
 	private WebDriver driver;
 	JukinMediaForm jukinMediaForm;

@@ -18,10 +18,6 @@ public class JukinMediaForm {
 	@FindBy(xpath="//p[contains(text(),'ACME')]")
 	WebElement companyMoto;
 
-	public WebElement getCompanyMoto() {
-		return companyMoto;
-	}
-
 	@FindBy(xpath="//img")
 	WebElement companyLogo;
 
@@ -81,19 +77,19 @@ public class JukinMediaForm {
 	@FindBy(xpath="//span[text()='5']")
 	WebElement rate5;
 
-	@FindBy(name="3")
+	@FindBy(xpath="//span[text()='1']/preceding-sibling::input[1]")
 	WebElement rate1RadioBtn;
 
-	@FindBy(name="4")
+	@FindBy(xpath="//span[text()='2']/preceding-sibling::input[1]")
 	WebElement rate2RadioBtn;
 
-	@FindBy(name="5")
+	@FindBy(xpath="//span[text()='3']/preceding-sibling::input[1]")
 	WebElement rate3RadioBtn;
 
-	@FindBy(name="6")
+	@FindBy(xpath="//span[text()='4']/preceding-sibling::input[1]")
 	WebElement rate4RadioBtn;
 
-	@FindBy(name="7")
+	@FindBy(xpath="//span[text()='5']/preceding-sibling::input[1]")
 	WebElement rate5RadioBtn;
 
 	@FindBy(xpath="//label[contains(text(),'Would')]")
@@ -142,7 +138,7 @@ public class JukinMediaForm {
 	}
 
 	public String getCompanyLogoLeftAlign() {
-		return CssHelper.getImageLeftAlign(companyLogo);
+		return CssHelper.getImageLeftAlign(driver.findElement(By.xpath("//img/ancestor::div[1]")));
 	}
 
 	public String getCompanyMotoText() {
@@ -425,7 +421,7 @@ public class JukinMediaForm {
 	
 	public void fillForm() {
 		advertisingRadioBtn.click();
-		//rate1RadioBtn.click();
+		rate1RadioBtn.click();
 		recommendRadioButtons.get(0).click();
 		firstNameTextbox.sendKeys("Jigs");
 		lastNameTextbox.sendKeys("varsada");

@@ -3,6 +3,7 @@ package com.jukin.test;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -224,6 +225,9 @@ public class Test {
 		//WebElement ele13 = driver.findElement(By.xpath("//button[text()='Submit']"));
 		//ele13.click();
 
+		List<WebElement> radiobutton = driver.findElements(By.xpath("//input[@ng-model='radioModel']"));
+		
+	
 	}
 
 }
