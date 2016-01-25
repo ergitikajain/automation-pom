@@ -2,6 +2,11 @@
 Thumbs.db
 ehthumbs.db
 
+.classpath
+.project
+.settings/
+target/
+
 # Folder config file
 Desktop.ini
 
@@ -45,3 +50,6 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+/target
+/test-output
+/target/classes
