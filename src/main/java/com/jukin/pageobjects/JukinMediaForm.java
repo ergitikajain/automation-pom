@@ -21,7 +21,7 @@ public class JukinMediaForm {
 	@FindBy(xpath="//img")
 	WebElement companyLogo;
 	
-	@FindBy(xpath="//p[contains(text(),'ACME')]")
+	@FindBy(xpath="//h1[contains(text(),'ACME')]")
 	WebElement companyName;
 	
 	@FindBy(xpath="//label[contains(text(),'How did you')]")

@@ -1,5 +1,7 @@
 package com.jukin.test.base;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -66,7 +68,7 @@ public class TestBaseSetup {
 	public void initializeTestBaseSetup(String browserType, String appURL) {
 		try {
 			setDriver(browserType, appURL);
-
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		} catch (Exception e) {
 			System.out.println("Error....." + e.getStackTrace());
 		}
