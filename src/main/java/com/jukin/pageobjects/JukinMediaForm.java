@@ -1,5 +1,6 @@
 package com.jukin.pageobjects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -335,4 +336,16 @@ public class JukinMediaForm {
 		return CssHelper.getTextAlign(submitButton);
 	}
 	
+	public void clickSubmit(){
+		this.submitButton.click();
+	}
+	
+	public String getPhoneError() {
+		WebElement phoneError = driver.findElement(By.xpath("//p[@class='phoneError']"));
+		return phoneError.getText();
+	}
+	
+	public void fillForm() {
+		
+	}
 }

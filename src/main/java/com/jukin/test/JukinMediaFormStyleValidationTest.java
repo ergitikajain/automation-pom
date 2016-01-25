@@ -2,6 +2,8 @@ package com.jukin.test;
 
 import static org.testng.Assert.assertEquals;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -10,7 +12,7 @@ import com.jukin.pageobjects.JukinMediaForm;
 import com.jukin.pageobjects.JukinMediaLogin;
 import com.jukin.test.base.TestBaseSetup;
 
-public class JukinMediaFormTest extends TestBaseSetup {
+public class JukinMediaFormStyleValidationTest extends TestBaseSetup {
 
 	private static final String arialFontFamily = "Arial, sans-serif";
 
@@ -22,6 +24,7 @@ public class JukinMediaFormTest extends TestBaseSetup {
 		driver = getDriver();
 		JukinMediaLogin loginPage = new JukinMediaLogin(driver);
 		loginPage.loginToJukinMedia("jukinmedia", "qatest");
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		jukinMediaForm = new JukinMediaForm(driver);
 	}
 
@@ -58,6 +61,20 @@ public class JukinMediaFormTest extends TestBaseSetup {
 		assertEquals(jukinMediaForm.getHowDidYouHearAboutFontSize(), "18px");
 		assertEquals(jukinMediaForm.getHowDidYouHearAboutTextAlign(), "start");
 	}
+	
+	@Test
+	public void validateHowDidYouHearAboutOptionsStyle() {
+		
+		assertEquals(jukinMediaForm.getSocialMediaFontFamily(), arialFontFamily);
+		assertEquals(jukinMediaForm.getSocialMediaFontSize(), "14px");
+		assertEquals(jukinMediaForm.getAdvertisingFontFamily(), arialFontFamily);
+		assertEquals(jukinMediaForm.getAdvertisingFontSize(), "14px");
+		assertEquals(jukinMediaForm.getSearchEngineFontFamily(), arialFontFamily);
+		assertEquals(jukinMediaForm.getSearchEngineFontSize(), "14px");
+		assertEquals(jukinMediaForm.getFriendFontFamily(), arialFontFamily);
+		assertEquals(jukinMediaForm.getFriendFontSize(), "14px");
+	}
+	
 	
 	@Test
 	public void validateRateYourExperieneceStyle() {
@@ -109,11 +126,11 @@ public class JukinMediaFormTest extends TestBaseSetup {
 		assertEquals(jukinMediaForm.getPhoneNumberTextAlign(), "start");
 	}
 	
-	/*@Test
+	@Test
 	public void validateSubmitButtonStyle() {
-		assertEquals(jukinMediaForm.get(), "Phone Number *");
-		assertEquals(jukinMediaForm.getPhoneNumberFontFamily(), arialFontFamily);
-		assertEquals(jukinMediaForm.getPhoneNumberFontSize(), "14px");
-		assertEquals(jukinMediaForm.getPhoneNumberTextAlign(), "start");
-	}*/
+		assertEquals(jukinMediaForm.getSubmitText(), "Submit");
+		assertEquals(jukinMediaForm.getSubmitFontFamily(), arialFontFamily);
+		assertEquals(jukinMediaForm.getSubmitFontSize(), "14px");
+		assertEquals(jukinMediaForm.getSubmitTextAlign(), "center");
+	}
 }
