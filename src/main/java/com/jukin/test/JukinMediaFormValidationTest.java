@@ -5,6 +5,7 @@ import static org.testng.Assert.assertEquals;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -32,10 +33,27 @@ public class JukinMediaFormValidationTest extends TestBaseSetup {
 		jukinMediaForm.clickSubmit();
 		assertEquals(jukinMediaForm.getPhoneError(), "Please enter phone number.");
 	}
+	
+	@Test
+	public void verifyNoReccommendation() {
+		jukinMediaForm.getRecommendRadioButtons().get(0).click();
+		Assert.assertFalse(jukinMediaForm.isDisplayedWhy());
+		Assert.assertFalse(jukinMediaForm.isDisplayedNot());
+		Assert.assertFalse(jukinMediaForm.isDisplayedTextArea());
+		
+		jukinMediaForm.getRecommendRadioButtons().get(1).click();
+		Assert.assertTrue(jukinMediaForm.isDisplayedWhy());
+		Assert.assertTrue(jukinMediaForm.isDisplayedNot());
+		Assert.assertTrue(jukinMediaForm.isDisplayedTextArea());
+		
+	}
+	
 
 	@Test
 	public void submitFilledForm() {
+		jukinMediaForm.fillForm();
 		jukinMediaForm.clickSubmit();
-		assertEquals(jukinMediaForm.getPhoneError(), "Please enter phone number.");
+
+		Assert.assertTrue(jukinMediaForm.verifySubmitButton());
 	}
 }

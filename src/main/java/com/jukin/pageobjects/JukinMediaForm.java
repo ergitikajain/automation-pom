@@ -1,5 +1,8 @@
 package com.jukin.pageobjects;
 
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -116,7 +119,19 @@ public class JukinMediaForm {
 
 	@FindBy(xpath="//button[text()='Submit']")
 	WebElement submitButton;	
-
+	
+	@FindBy(xpath="//input[@ng-model='recommend']")
+	List<WebElement> recommendRadioButtons;
+	
+	@FindBy(xpath="//b[text()='Why']")
+	WebElement ele7AWhy;
+	
+	@FindBy(xpath="//label[text()=' not? *']")
+	WebElement ele7Anot;
+	
+	@FindBy(xpath="//textarea")
+	WebElement text7A ;
+	
 	public JukinMediaForm(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -409,6 +424,34 @@ public class JukinMediaForm {
 	}
 	
 	public void fillForm() {
-		
+		advertisingRadioBtn.click();
+		//rate1RadioBtn.click();
+		recommendRadioButtons.get(0).click();
+		firstNameTextbox.sendKeys("Jigs");
+		lastNameTextbox.sendKeys("varsada");
+		emailTextbox.sendKeys("test@gmail.com");
+		phoneNumberTextbox.sendKeys("898989");
+	}
+	
+	public List<WebElement> getRecommendRadioButtons() {
+		return recommendRadioButtons;
+	}
+
+	public boolean verifySubmitButton() {
+		WebElement sucessPopUp = driver.findElement(By.xpath("//h1[contains(text(),'successfully')]"));
+		System.out.println(sucessPopUp.getText());
+		return true;
+	}
+	
+	public boolean isDisplayedWhy() {
+		return ele7AWhy.isDisplayed();
+	}
+	
+	public boolean isDisplayedNot() {
+		return ele7Anot.isDisplayed();
+	}
+	
+	public boolean isDisplayedTextArea() {
+		return text7A.isDisplayed();
 	}
 }
