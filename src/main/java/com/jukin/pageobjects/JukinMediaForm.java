@@ -21,17 +21,85 @@ public class JukinMediaForm {
 	@FindBy(xpath="//img")
 	WebElement companyLogo;
 	
-	@FindBy(xpath="//p[contains(text(),'ACME')]")
+	@FindBy(xpath="//h1[contains(text(),'ACME')]")
 	WebElement companyName;
 	
 	@FindBy(xpath="//label[contains(text(),'How did you')]")
 	WebElement howDidYouHearAbout;
+
+	@FindBy(xpath="//span[text()='Social Media']")
+	WebElement socialMedia;
+	
+	@FindBy(xpath="//span[text()='Advertising']")
+	WebElement advertising;
+	
+	@FindBy(xpath="//span[text()='Search Engine']")
+	WebElement searchEngine;
+	
+	@FindBy(xpath="//span[text()='Friend']")
+	WebElement friend;
+	
+	@FindBy(id="other")
+	WebElement other;
+	
+
+	@FindBy(xpath="//span[text()='Social Media']/preceding-sibling::input[1]")
+	WebElement socialMediaRadioBtn;
+	
+	@FindBy(xpath="//input[@value='Advertising']")
+	WebElement advertisingRadioBtn;
+	
+	@FindBy(xpath="//input[@value='Search Engine']")
+	WebElement searchEngineRadioBtn;
+	
+	@FindBy(xpath="//input[@value='Friend']")
+	WebElement friendRadioBtn;
+	
+	@FindBy(xpath="//input[@value='other']")
+	WebElement otherRadioBtn;
+	
 	
 	@FindBy(xpath="//label[contains(text(),'Rate')]")
 	WebElement rateYourExperience;
 	
+	@FindBy(xpath="//span[text()='1']")
+	WebElement rate1;
+	
+	@FindBy(xpath="//span[text()='2']")
+	WebElement rate2;
+	
+	@FindBy(xpath="//span[text()='3']")
+	WebElement rate3;
+	
+	@FindBy(xpath="//span[text()='4']")
+	WebElement rate4;
+	
+	@FindBy(xpath="//span[text()='5']")
+	WebElement rate5;
+	
+	@FindBy(name="3")
+	WebElement rate1RadioBtn;
+	
+	@FindBy(name="4")
+	WebElement rate2RadioBtn;
+	
+	@FindBy(name="5")
+	WebElement rate3RadioBtn;
+	
+	@FindBy(name="6")
+	WebElement rate4RadioBtn;
+	
+	@FindBy(name="7")
+	WebElement rate5RadioBtn;
+	
 	@FindBy(xpath="//label[contains(text(),'Would')]")
 	WebElement wouldYouRecommend;
+	
+	@FindBy(xpath="//span[text()='Yes']")
+	WebElement yes;
+	
+	@FindBy(xpath="//span[text()='No']")
+	WebElement no;
 	
 	@FindBy(xpath="//b[contains(text(),'Contact')]/ancestor::form[1]/div[5]/div[1]/input")
 	WebElement firstNameTextbox;
@@ -45,7 +113,8 @@ public class JukinMediaForm {
 	@FindBy(id ="phone")
 	WebElement phoneNumberTextbox;
 	
-	
+	@FindBy(xpath="//button[text()='Submit']")
+	WebElement submitButton;	
 	
 	public JukinMediaForm(WebDriver driver) {
 		this.driver = driver;
@@ -115,6 +184,38 @@ public class JukinMediaForm {
 		return CssHelper.getTextAlign(howDidYouHearAbout);
 	}
 	
+	public String getSocialMediaFontSize() {
+		return CssHelper.getFontSize(socialMedia);
+	}
+	
+	public String getSocialMediaFontFamily() {
+		return CssHelper.getFontFamily(socialMedia);
+	}
+
+	public String getAdvertisingFontSize() {
+		return CssHelper.getFontSize(advertising);
+	}
+	
+	public String getAdvertisingFontFamily() {
+		return CssHelper.getFontFamily(advertising);
+	}
+	
+	public String getSearchEngineFontSize() {
+		return CssHelper.getFontSize(searchEngine);
+	}
+	
+	public String getSearchEngineFontFamily() {
+		return CssHelper.getFontFamily(searchEngine);
+	}
+	
+	public String getFriendFontSize() {
+		return CssHelper.getFontSize(friend);
+	}
+	
+	public String getFriendFontFamily() {
+		return CssHelper.getFontFamily(friend);
+	}
+	
 	
 	public String getRateYourExperienceText() {
 		return rateYourExperience.getText();
@@ -178,11 +279,11 @@ public class JukinMediaForm {
 	public String getLastNameFontFamily() {
 		return CssHelper.getFontFamily(lastNameTextbox);
 	}
-	
-	
+		
 	public String getLastNameTextAlign() {
 		return CssHelper.getTextAlign(lastNameTextbox);
 	}
+	
 	
 	public String getEmailGhostText() {
 		return CssHelper.getTextboxPlaceholder(emailTextbox);
@@ -215,6 +316,23 @@ public class JukinMediaForm {
 	
 	public String getPhoneNumberTextAlign() {
 		return CssHelper.getTextAlign(phoneNumberTextbox);
+	}
+	
+	
+	public String getSubmitText() {
+		return submitButton.getText();
+	}
+	
+	public String getSubmitFontSize() {
+		return CssHelper.getFontSize(submitButton);
+	}
+	
+	public String getSubmitFontFamily() {
+		return CssHelper.getFontFamily(submitButton);
+	}
+	
+	public String getSubmitTextAlign() {
+		return CssHelper.getTextAlign(submitButton);
 	}
 	
 }
