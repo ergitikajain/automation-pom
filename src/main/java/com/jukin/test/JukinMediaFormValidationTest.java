@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 
 import com.jukin.pageobjects.JukinMediaForm;
 import com.jukin.pageobjects.JukinMediaLogin;
+import com.jukin.pageobjects.JukinMediaPopup;
 import com.jukin.test.base.TestBaseSetup;
 
 public class JukinMediaFormValidationTest extends TestBaseSetup {
@@ -55,5 +56,13 @@ public class JukinMediaFormValidationTest extends TestBaseSetup {
 		jukinMediaForm.clickSubmit();
 
 		Assert.assertTrue(jukinMediaForm.verifySubmitButton());
+	}
+	
+	@Test
+	public void clickMailingListLink() {
+		jukinMediaForm.clickMailingList();
+		
+		JukinMediaPopup name = new JukinMediaPopup(driver);
+		Assert.assertEquals(name.getSignUpLabelText(),"Sign Up for Out Newsleter");
 	}
 }

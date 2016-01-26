@@ -32,6 +32,8 @@ public class CssHelper {
 		return webElement.getCssValue("padding-left");
 	}
 	
-
+	public static String getBtnAlign(WebElement webElement) {
+		return webElement.getCssValue("float");
+	}
 	
 }

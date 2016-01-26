@@ -23,6 +23,9 @@ public class JukinMediaForm {
 
 	@FindBy(xpath="//h1[contains(text(),'ACME')]")
 	WebElement companyName;
+	
+	@FindBy(className="pointer")
+	WebElement mailingList;
 
 	@FindBy(xpath="//label[contains(text(),'How did you')]")
 	WebElement howDidYouHearAbout;
@@ -179,6 +182,15 @@ public class JukinMediaForm {
 		return CssHelper.getTextAlign(companyName);
 	}
 
+	
+	public String getMailingListFontSize() {
+		return CssHelper.getFontSize(mailingList);
+	}
+
+	public String getMailingListFontFamily() {
+		return CssHelper.getFontFamily(mailingList);
+	}
+	
 
 	public String getHowDidYouHearAboutText() {
 		return howDidYouHearAbout.getText();
@@ -414,6 +426,9 @@ public class JukinMediaForm {
 		this.submitButton.click();
 	}
 	
+	public void clickMailingList(){
+		this.mailingList.click();
+	}
 	public String getPhoneError() {
 		WebElement phoneError = driver.findElement(By.xpath("//p[@class='phoneError']"));
 		return phoneError.getText();
@@ -439,6 +454,7 @@ public class JukinMediaForm {
 		return true;
 	}
 	
+
 	public boolean isDisplayedWhy() {
 		return ele7AWhy.isDisplayed();
 	}
