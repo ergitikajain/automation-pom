@@ -1,12 +1,13 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Page Object test">
-<parameter name="appURL" value="http://qatest.jukinmedia.com/#/"/>
-<parameter name="browserType" value="firefox"/>
-  <test name="sample test">
-    <classes>
-      <class name="com.jukin.test.JukinMediaLoginTest"/>
-      <class name="com.jukin.test.JukinMediaFormStyleValidationTest"/>
-       <class name="com.jukin.test.JukinMediaFormValidationTest"/>
-    </classes>
-  </test>
+	<parameter name="appURL" value="http://qatest.jukinmedia.com/#/" />
+	<parameter name="browserType" value="safari" />
+	<test name="sample test">
+		<classes>
+			<class name="com.jukin.test.JukinMediaLoginTest" />
+			<class name="com.jukin.test.JukinMediaFormStyleValidationTest" />
+			<class name="com.jukin.test.JukinMediaFormValidationTest" />
+			<class name="com.jukin.test.JukinMediaPopUpTest" />
+		</classes>
+	</test>
 </suite>

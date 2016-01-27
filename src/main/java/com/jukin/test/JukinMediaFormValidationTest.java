@@ -19,6 +19,7 @@ public class JukinMediaFormValidationTest extends TestBaseSetup {
 
 	private WebDriver driver;
 	JukinMediaForm jukinMediaForm;
+	JukinMediaPopup junJukinMediaPopup;
 
 	@BeforeClass
 	public void setUp() {
@@ -29,13 +30,13 @@ public class JukinMediaFormValidationTest extends TestBaseSetup {
 		jukinMediaForm = new JukinMediaForm(driver);
 	}
 
-	@Test
+	@Test(priority=0)
 	public void submitBlankForm() {
 		jukinMediaForm.clickSubmit();
 		assertEquals(jukinMediaForm.getPhoneError(), "Please enter phone number.");
 	}
 	
-	@Test
+	@Test(priority=1)
 	public void verifyNoReccommendation() {
 		jukinMediaForm.getRecommendRadioButtons().get(0).click();
 		Assert.assertFalse(jukinMediaForm.isDisplayedWhy());
@@ -50,7 +51,7 @@ public class JukinMediaFormValidationTest extends TestBaseSetup {
 	}
 	
 
-	@Test
+	@Test(priority=3)
 	public void submitFilledForm() {
 		jukinMediaForm.fillForm();
 		jukinMediaForm.clickSubmit();
@@ -58,11 +59,5 @@ public class JukinMediaFormValidationTest extends TestBaseSetup {
 		Assert.assertTrue(jukinMediaForm.verifySubmitButton());
 	}
 	
-	@Test
-	public void clickMailingListLink() {
-		jukinMediaForm.clickMailingList();
-		
-		JukinMediaPopup name = new JukinMediaPopup(driver);
-		Assert.assertEquals(name.getSignUpLabelText(),"Sign Up for Out Newsleter");
-	}
+	
 }

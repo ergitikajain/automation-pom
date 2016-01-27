@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import com.jukin.pageobjects.JukinMediaForm;
 import com.jukin.pageobjects.JukinMediaLogin;
@@ -14,7 +15,7 @@ import com.jukin.test.base.TestBaseSetup;
 
 public class JukinMediaFormStyleValidationTest extends TestBaseSetup {
 
-	private static final String arialFontFamily = "Arial,sans-serif";
+	private static final String arialFontFamily = "Arial, sans-serif";
 
 	private WebDriver driver;
 	JukinMediaForm jukinMediaForm;
