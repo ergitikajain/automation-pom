@@ -2,7 +2,7 @@ package com.jukin.util;
 
 import org.openqa.selenium.WebElement;
 
-public class CssHelper {
+public class WebElementHelper {
 
 	public static String getFontFamily(WebElement webElement) {
 		return webElement.getCssValue("font-family");
@@ -34,6 +34,14 @@ public class CssHelper {
 	
 	public static String getBtnAlign(WebElement webElement) {
 		return webElement.getCssValue("float");
+	}
+	
+	public static String getMaxLength(WebElement webElement) {
+		return webElement.getAttribute("maxlength");
+	}
+	
+	public static String getRequired(WebElement webElement) {
+		return webElement.getAttribute("required");
 	}
 	
 }

@@ -1,13 +1,12 @@
 package com.jukin.test;
 
-import static org.testng.Assert.assertEquals;
-
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import com.jukin.pageobjects.JukinMediaForm;
 import com.jukin.pageobjects.JukinMediaLogin;
@@ -16,8 +15,9 @@ import com.jukin.test.base.TestBaseSetup;
 
 public class JukinMediaPopUpTest extends TestBaseSetup {
 
-	private static final String arialFontFamily = "Arial, sans-serif";
+	private static final String arialFontFamily = "Arial,sans-serif";
 	private WebDriver driver;
+	private SoftAssert softAssert ;
 	JukinMediaForm jukinMediaForm;
 	JukinMediaPopup junJukinMediaPopup;
 
@@ -36,47 +36,60 @@ public class JukinMediaPopUpTest extends TestBaseSetup {
 		junJukinMediaPopup = new JukinMediaPopup(driver);
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		Assert.assertEquals(junJukinMediaPopup.getSignUpLabelText(),
-				"Sign Up for Out Newsleter");
+				"Sign Up for Our Newsleter");
 	}
 
 	@Test
 	public void validateSignUpLabelStyle() {
-		assertEquals(junJukinMediaPopup.getSignUpLabelText(),
-				"Sign Up for Out Newsleter");
-		assertEquals(junJukinMediaPopup.getSignUpLabelFontFamily(),
+		softAssert = new SoftAssert();
+		softAssert.assertEquals(junJukinMediaPopup.getSignUpLabelText(),
+				"Sign Up for Our Newsleter");
+		softAssert.assertEquals(junJukinMediaPopup.getSignUpLabelFontFamily(),
 				arialFontFamily);
-		assertEquals(junJukinMediaPopup.getSignUpLabelFontSize(), "18px");
-		assertEquals(junJukinMediaPopup.getSignUpLabelTextAlign(), "center");
+		softAssert.assertEquals(junJukinMediaPopup.getSignUpLabelFontSize(), "18px");
+		softAssert.assertEquals(junJukinMediaPopup.getSignUpLabelTextAlign(), "center");
+		softAssert.assertAll();
 	}
 
 	@Test
 	public void validateSignUpEmailStyle() {
-		assertEquals(junJukinMediaPopup.getSignUpEmailGhostText(),
-				"Email Addres *");
-		assertEquals(junJukinMediaPopup.getSignUpEmailFontFamily(),
+		softAssert = new SoftAssert();
+		softAssert.assertEquals(junJukinMediaPopup.getSignUpEmailGhostText(),
+				"Email Address *");
+		softAssert.assertEquals(junJukinMediaPopup.getSignUpEmailFontFamily(),
 				arialFontFamily);
-		assertEquals(junJukinMediaPopup.getSignUpEmailFontSize(), "14px");
-		assertEquals(junJukinMediaPopup.getSignUpEmailTextAlign(), "start");
+		softAssert.assertEquals(junJukinMediaPopup.getSignUpEmailFontSize(), "14px");
+		softAssert.assertEquals(junJukinMediaPopup.getSignUpEmailTextAlign(), "start");
+		softAssert.assertEquals(junJukinMediaPopup.getSignUpEmailMaxLength(), "255");
+		softAssert.assertAll();
 	}
 
 	@Test
 	public void validateICertifyStyle() {
-		assertEquals(junJukinMediaPopup.getCertifyCheckboxText(),
+		softAssert = new SoftAssert();
+		softAssert.assertEquals(junJukinMediaPopup.getCertifyCheckboxText(),
 				"I certify that I am 18 years of age or older *");
-		assertEquals(junJukinMediaPopup.getCertifyCheckboxFontFamily(),
+		softAssert.assertEquals(junJukinMediaPopup.getCertifyCheckboxFontFamily(),
 				arialFontFamily);
-		assertEquals(junJukinMediaPopup.getCertifyCheckboxFontSize(), "14px");
-		assertEquals(junJukinMediaPopup.getCertifyCheckboxTextTextAlign(),
+		softAssert.assertEquals(junJukinMediaPopup.getCertifyCheckboxFontSize(), "18px");
+		softAssert.assertEquals(junJukinMediaPopup.getCertifyCheckboxTextTextAlign(),
 				"center");
+		softAssert.assertAll();
 	}
 
 	@Test
 	public void validateSignUpBtnStyle() {
-		assertEquals(junJukinMediaPopup.getSignUpBtnAlignTextAlign(), "center");
+		softAssert = new SoftAssert();
+		softAssert.assertEquals(junJukinMediaPopup.getSignUpBtnAlignment(), "center");
+		softAssert.assertAll();
 	}
 	
 	@Test
 	public void validateCloseBtnStyle() {
-		assertEquals(junJukinMediaPopup.getCloseBtnAlignTextAlign(), "right");
+		softAssert = new SoftAssert();
+		softAssert.assertEquals(junJukinMediaPopup.getCloseBtnAlignment(), "right");
+		softAssert.assertAll();
 	}
+	
+	
 }

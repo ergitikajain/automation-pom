@@ -1,12 +1,11 @@
 package com.jukin.pageobjects;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import com.jukin.util.CssHelper;
+import com.jukin.util.WebElementHelper;
 
 public class JukinMediaPopup {
 
@@ -30,7 +29,8 @@ public class JukinMediaPopup {
 	@FindBy(xpath = "//button[text()='Sign Up']/ancestor::div[1]")
 	WebElement signUpBtnAlign;
 	
-	@FindBy(xpath = "//span[text()='×']")
+	
+	@FindBy(xpath = "//span[text()='×']/ancestor::button[1]")
 	WebElement closeBtn;
 
 	public JukinMediaPopup(WebDriver driver) {
@@ -44,32 +44,36 @@ public class JukinMediaPopup {
 	}
 
 	public String getSignUpLabelFontSize() {
-		return CssHelper.getFontSize(signUpLabel);
+		return WebElementHelper.getFontSize(signUpLabel);
 	}
 
 	public String getSignUpLabelFontFamily() {
-		return CssHelper.getFontFamily(signUpLabel);
+		return WebElementHelper.getFontFamily(signUpLabel);
 	}
 
 	public String getSignUpLabelTextAlign() {
-		return CssHelper.getTextAlign(signUpLabel);
+		return WebElementHelper.getTextAlign(signUpLabel);
 	}
 	
 	
 	public String getSignUpEmailGhostText() {
-		return CssHelper.getTextboxPlaceholder(signUpEmailTextbox);
+		return WebElementHelper.getTextboxPlaceholder(signUpEmailTextbox);
 	}
 
 	public String getSignUpEmailFontSize() {
-		return CssHelper.getFontSize(signUpEmailTextbox);
+		return WebElementHelper.getFontSize(signUpEmailTextbox);
 	}
 
 	public String getSignUpEmailFontFamily() {
-		return CssHelper.getFontFamily(signUpEmailTextbox);
+		return WebElementHelper.getFontFamily(signUpEmailTextbox);
 	}
 
 	public String getSignUpEmailTextAlign() {
-		return CssHelper.getTextAlign(signUpEmailTextbox);
+		return WebElementHelper.getTextAlign(signUpEmailTextbox);
+	}
+	
+	public String getSignUpEmailMaxLength() {
+		return WebElementHelper.getMaxLength(signUpEmailTextbox);
 	}
 	
 	public String getCertifyCheckboxText() {
@@ -77,23 +81,30 @@ public class JukinMediaPopup {
 	}
 
 	public String getCertifyCheckboxFontSize() {
-		return CssHelper.getFontSize(certifyCheckboxText);
+		return WebElementHelper.getFontSize(certifyCheckboxText);
 	}
 
 	public String getCertifyCheckboxFontFamily() {
-		return CssHelper.getFontFamily(certifyCheckboxText);
+		return WebElementHelper.getFontFamily(certifyCheckboxText);
 	}
 
 	public String getCertifyCheckboxTextTextAlign() {
-		return CssHelper.getTextAlign(certifyCheckboxText);
+		return WebElementHelper.getTextAlign(certifyCheckboxText);
 	}
 	
-	public String getSignUpBtnAlignTextAlign() {
-		return CssHelper.getTextAlign(signUpBtnAlign);
+	public String getSignUpBtnAlignment() {
+		return WebElementHelper.getTextAlign(signUpBtnAlign);
 	}
 	
-	public String getCloseBtnAlignTextAlign() {
-		return CssHelper.getBtnAlign(closeBtn);
+	public String getCloseBtnAlignment() {
+		return WebElementHelper.getBtnAlign(closeBtn);
 	}
 	
+	public void clickCloseBtn() {
+		closeBtn.click();
+	}
+	
+	public void clickSignupBtn() {
+		signUpBtn.click();
+	}
 }

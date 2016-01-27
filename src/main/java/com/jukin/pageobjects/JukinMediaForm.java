@@ -1,15 +1,12 @@
 package com.jukin.pageobjects;
 
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import com.jukin.util.CssHelper;
+import com.jukin.util.WebElementHelper;
 
 public class JukinMediaForm {
 
@@ -21,6 +18,9 @@ public class JukinMediaForm {
 	@FindBy(xpath="//img")
 	WebElement companyLogo;
 
+	@FindBy(xpath="//img/ancestor::div[1]")
+	WebElement companyLogoAlign;
+	
 	@FindBy(xpath="//h1[contains(text(),'ACME')]")
 	WebElement companyName;
 	
@@ -104,6 +104,22 @@ public class JukinMediaForm {
 	@FindBy(xpath="//span[text()='No']")
 	WebElement no;
 
+
+	@FindBy(xpath="//span[text()='Yes']/preceding-sibling::input[1]")
+	WebElement yesRadioBtn;
+
+	@FindBy(xpath="//span[text()='No']/preceding-sibling::input[1]")
+	WebElement noRadioBtn;
+	
+	@FindBy(xpath="//b[text()='Why']")
+	WebElement noOptionWhy;
+	
+	@FindBy(xpath="//label[text()=' not? *']")
+	WebElement noOptionNot;
+	
+	@FindBy(xpath="//textarea")
+	WebElement reasoningTextarea ;
+	
 	@FindBy(xpath="//b[contains(text(),'Contact')]/ancestor::form[1]/div[5]/div[1]/input")
 	WebElement firstNameTextbox;
 
@@ -119,17 +135,8 @@ public class JukinMediaForm {
 	@FindBy(xpath="//button[text()='Submit']")
 	WebElement submitButton;	
 	
-	@FindBy(xpath="//input[@ng-model='recommend']")
-	List<WebElement> recommendRadioButtons;
+
 	
-	@FindBy(xpath="//b[text()='Why']")
-	WebElement ele7AWhy;
-	
-	@FindBy(xpath="//label[text()=' not? *']")
-	WebElement ele7Anot;
-	
-	@FindBy(xpath="//textarea")
-	WebElement text7A ;
 	
 	public JukinMediaForm(WebDriver driver) {
 		this.driver = driver;
@@ -137,11 +144,11 @@ public class JukinMediaForm {
 	}
 
 	public String getCompanyLogoVerticalAlign() {
-		return CssHelper.getImageVerticalAlign(companyLogo);
+		return WebElementHelper.getImageVerticalAlign(companyLogo);
 	}
 
 	public String getCompanyLogoLeftAlign() {
-		return CssHelper.getImageLeftAlign(driver.findElement(By.xpath("//img/ancestor::div[1]")));
+		return WebElementHelper.getImageLeftAlign(companyLogoAlign);
 	}
 
 	public String getCompanyMotoText() {
@@ -149,19 +156,19 @@ public class JukinMediaForm {
 	}
 
 	public String getCompanyMotoFontSize() {
-		return CssHelper.getFontSize(companyMoto);
+		return WebElementHelper.getFontSize(companyMoto);
 	}
 
 	public String getCompanyMotoFontFamily() {
-		return CssHelper.getFontFamily(companyMoto);
+		return WebElementHelper.getFontFamily(companyMoto);
 	}
 
 	public String getCompanyMotoFontStyle() {
-		return CssHelper.getFontStyle(companyMoto);
+		return WebElementHelper.getFontStyle(companyMoto);
 	}
 
 	public String getCompanyMotoTextAlign() {
-		return CssHelper.getTextAlign(companyMoto);
+		return WebElementHelper.getTextAlign(companyMoto);
 	}
 
 
@@ -171,24 +178,24 @@ public class JukinMediaForm {
 	}
 
 	public String getCompanyNameFontSize() {
-		return CssHelper.getFontSize(companyName);
+		return WebElementHelper.getFontSize(companyName);
 	}
 
 	public String getCompanyNameFontFamily() {
-		return CssHelper.getFontFamily(companyName);
+		return WebElementHelper.getFontFamily(companyName);
 	}
 
 	public String getCompanyNameTextAlign() {
-		return CssHelper.getTextAlign(companyName);
+		return WebElementHelper.getTextAlign(companyName);
 	}
 
 	
 	public String getMailingListFontSize() {
-		return CssHelper.getFontSize(mailingList);
+		return WebElementHelper.getFontSize(mailingList);
 	}
 
 	public String getMailingListFontFamily() {
-		return CssHelper.getFontFamily(mailingList);
+		return WebElementHelper.getFontFamily(mailingList);
 	}
 	
 
@@ -197,57 +204,70 @@ public class JukinMediaForm {
 	}
 
 	public String getHowDidYouHearAboutFontSize() {
-		return CssHelper.getFontSize(howDidYouHearAbout);
+		return WebElementHelper.getFontSize(howDidYouHearAbout);
 	}
 
 	public String getHowDidYouHearAboutFontFamily() {
-		return CssHelper.getFontFamily(howDidYouHearAbout);
+		return WebElementHelper.getFontFamily(howDidYouHearAbout);
 	}
 
 	public String getHowDidYouHearAboutTextAlign() {
-		return CssHelper.getTextAlign(howDidYouHearAbout);
+		return WebElementHelper.getTextAlign(howDidYouHearAbout);
 	}
 
+	public WebElement getSocialMediaRadioBtn() {
+		return socialMediaRadioBtn;
+	}
+	
 	public String getSocialMediaFontSize() {
-		return CssHelper.getFontSize(socialMedia);
+		return WebElementHelper.getFontSize(socialMedia);
 	}
 
 	public String getSocialMediaFontFamily() {
-		return CssHelper.getFontFamily(socialMedia);
+		return WebElementHelper.getFontFamily(socialMedia);
 	}
 
 	public String getAdvertisingFontSize() {
-		return CssHelper.getFontSize(advertising);
+		return WebElementHelper.getFontSize(advertising);
 	}
 
 	public String getAdvertisingFontFamily() {
-		return CssHelper.getFontFamily(advertising);
+		return WebElementHelper.getFontFamily(advertising);
 	}
 
 	public String getSearchEngineFontSize() {
-		return CssHelper.getFontSize(searchEngine);
+		return WebElementHelper.getFontSize(searchEngine);
 	}
 
 	public String getSearchEngineFontFamily() {
-		return CssHelper.getFontFamily(searchEngine);
+		return WebElementHelper.getFontFamily(searchEngine);
 	}
 
 	public String getFriendFontSize() {
-		return CssHelper.getFontSize(friend);
+		return WebElementHelper.getFontSize(friend);
 	}
 
 	public String getFriendFontFamily() {
-		return CssHelper.getFontFamily(friend);
+		return WebElementHelper.getFontFamily(friend);
 	}
 
+	public WebElement getOtherRadioBtn() {
+		return otherRadioBtn;
+	}
 	public String getOtherGhostText() {
-		return CssHelper.getTextboxPlaceholder(other);
+		return WebElementHelper.getTextboxPlaceholder(other);
 	}
 	public String getOtherFontSize() {
-		return CssHelper.getFontSize(other);
+		return WebElementHelper.getFontSize(other);
 	}
 	public String getOtherFontFamily() {
-		return CssHelper.getFontFamily(other);
+		return WebElementHelper.getFontFamily(other);
+	}
+	public String getOtherMaxLength() {
+		return WebElementHelper.getMaxLength(other);
+	}
+	public String getOtherRequired() {
+		return WebElementHelper.getRequired(other);
 	}
 
 
@@ -256,50 +276,50 @@ public class JukinMediaForm {
 	}
 
 	public String getRateYourExperienceFontSize() {
-		return CssHelper.getFontSize(rateYourExperience);
+		return WebElementHelper.getFontSize(rateYourExperience);
 	}
 
 	public String getRateYourExperienceFontFamily() {
-		return CssHelper.getFontFamily(rateYourExperience);
+		return WebElementHelper.getFontFamily(rateYourExperience);
 	}
 
 	public String getRateYourExperienceTextAlign() {
-		return CssHelper.getTextAlign(rateYourExperience);
+		return WebElementHelper.getTextAlign(rateYourExperience);
 	}
 	public String getRate1FontSize() {
-		return CssHelper.getFontSize(rate1);
+		return WebElementHelper.getFontSize(rate1);
 	}
 
 	public String getRate1FontFamily() {
-		return CssHelper.getFontFamily(rate1);
+		return WebElementHelper.getFontFamily(rate1);
 	}
 	public String getRate2FontSize() {
-		return CssHelper.getFontSize(rate2);
+		return WebElementHelper.getFontSize(rate2);
 	}
 
 	public String getRate2FontFamily() {
-		return CssHelper.getFontFamily(rate2);
+		return WebElementHelper.getFontFamily(rate2);
 	}
 	public String getRate3FontSize() {
-		return CssHelper.getFontSize(rate3);
+		return WebElementHelper.getFontSize(rate3);
 	}
 
 	public String getRate3FontFamily() {
-		return CssHelper.getFontFamily(rate3);
+		return WebElementHelper.getFontFamily(rate3);
 	}
 	public String getRate4FontSize() {
-		return CssHelper.getFontSize(rate4);
+		return WebElementHelper.getFontSize(rate4);
 	}
 
 	public String getRate4FontFamily() {
-		return CssHelper.getFontFamily(rate4);
+		return WebElementHelper.getFontFamily(rate4);
 	}
 	public String getRate5FontSize() {
-		return CssHelper.getFontSize(rate5);
+		return WebElementHelper.getFontSize(rate5);
 	}
 
 	public String getRate5FontFamily() {
-		return CssHelper.getFontFamily(rate5);
+		return WebElementHelper.getFontFamily(rate5);
 	}
 
 
@@ -308,115 +328,167 @@ public class JukinMediaForm {
 	}
 
 	public String getYesFontSize() {
-		return CssHelper.getFontSize(yes);
+		return WebElementHelper.getFontSize(yes);
 	}
 
 	public String getYesFontFamily() {
-		return CssHelper.getFontFamily(yes);
+		return WebElementHelper.getFontFamily(yes);
 	}
 	public String getNoFontSize() {
-		return CssHelper.getFontSize(no);
+		return WebElementHelper.getFontSize(no);
 	}
 
 	public String getNoFontFamily() {
-		return CssHelper.getFontFamily(no);
+		return WebElementHelper.getFontFamily(no);
+	}
+	
+	public boolean isDisplayedWhy() {
+		return noOptionWhy.isDisplayed();
+	}
+	
+	public boolean isDisplayedNot() {
+		return noOptionNot.isDisplayed();
+	}
+	
+	public WebElement getYesRadioBtn() {
+		return yesRadioBtn;
+	}
+
+	public WebElement getNoRadioBtn() {
+		return noRadioBtn;
+	}
+
+	public boolean isDisplayedTextArea() {
+		return reasoningTextarea.isDisplayed();
+	}
+	
+	public String getReasoningTextareaGhostText() {
+		return WebElementHelper.getTextboxPlaceholder(reasoningTextarea);
+	}
+	
+	public String getReasoningTextareaMaxLength() {
+		return WebElementHelper.getMaxLength(reasoningTextarea);
+	}
+	public String getReasoningTextareaRequired() {
+		return WebElementHelper.getRequired(reasoningTextarea);
 	}
 	
 	public String getWouldYouRecommendFontSize() {
-		return CssHelper.getFontSize(wouldYouRecommend);
+		return WebElementHelper.getFontSize(wouldYouRecommend);
 	}
 
 	public String getWouldYouRecommendFontFamily() {
-		return CssHelper.getFontFamily(wouldYouRecommend);
+		return WebElementHelper.getFontFamily(wouldYouRecommend);
 	}
 
 	public String getWouldYouRecommendTextAlign() {
-		return CssHelper.getTextAlign(wouldYouRecommend);
+		return WebElementHelper.getTextAlign(wouldYouRecommend);
 	}
 
 
 	public String getFirstNameGhostText() {
-		return CssHelper.getTextboxPlaceholder(firstNameTextbox);
+		return WebElementHelper.getTextboxPlaceholder(firstNameTextbox);
 	}
 
 	public String getFirstNameFontSize() {
-		return CssHelper.getFontSize(firstNameTextbox);
+		return WebElementHelper.getFontSize(firstNameTextbox);
 	}
 
 	public String getFirstNameFontFamily() {
-		return CssHelper.getFontFamily(firstNameTextbox);
+		return WebElementHelper.getFontFamily(firstNameTextbox);
 	}
 
 	public String getFirstNameTextAlign() {
-		return CssHelper.getTextAlign(firstNameTextbox);
+		return WebElementHelper.getTextAlign(firstNameTextbox);
+	}
+	public String getFirstNameMaxLength() {
+		return WebElementHelper.getMaxLength(firstNameTextbox);
+	}
+	public String getFirstNameRequired() {
+		return WebElementHelper.getRequired(firstNameTextbox);
 	}
 
-
 	public String getLastNameGhostText() {
-		return CssHelper.getTextboxPlaceholder(lastNameTextbox);
+		return WebElementHelper.getTextboxPlaceholder(lastNameTextbox);
 	}
 
 	public String getLastNameFontSize() {
-		return CssHelper.getFontSize(lastNameTextbox);
+		return WebElementHelper.getFontSize(lastNameTextbox);
 	}
 
 	public String getLastNameFontFamily() {
-		return CssHelper.getFontFamily(lastNameTextbox);
+		return WebElementHelper.getFontFamily(lastNameTextbox);
 	}
 
 	public String getLastNameTextAlign() {
-		return CssHelper.getTextAlign(lastNameTextbox);
+		return WebElementHelper.getTextAlign(lastNameTextbox);
 	}
 
+	public String getLastNameMaxLength() {
+		return WebElementHelper.getMaxLength(lastNameTextbox);
+	}
+	public String getLastNameRequired() {
+		return WebElementHelper.getRequired(lastNameTextbox);
+	}
 
 	public String getEmailGhostText() {
-		return CssHelper.getTextboxPlaceholder(emailTextbox);
+		return WebElementHelper.getTextboxPlaceholder(emailTextbox);
 	}
 
 	public String getEmailFontSize() {
-		return CssHelper.getFontSize(emailTextbox);
+		return WebElementHelper.getFontSize(emailTextbox);
 	}
 
 	public String getEmailFontFamily() {
-		return CssHelper.getFontFamily(emailTextbox);
+		return WebElementHelper.getFontFamily(emailTextbox);
 	}
 
 	public String getEmailTextAlign() {
-		return CssHelper.getTextAlign(emailTextbox);
+		return WebElementHelper.getTextAlign(emailTextbox);
 	}
-
-
+	public String getEmailMaxLength() {
+		return WebElementHelper.getMaxLength(emailTextbox);
+	}
+	public String getEmailRequired() {
+		return WebElementHelper.getRequired(emailTextbox);
+	}
+	
 	public String getPhoneNumberGhostText() {
-		return CssHelper.getTextboxPlaceholder(phoneNumberTextbox);
+		return WebElementHelper.getTextboxPlaceholder(phoneNumberTextbox);
 	}
 
 	public String getPhoneNumberFontSize() {
-		return CssHelper.getFontSize(phoneNumberTextbox);
+		return WebElementHelper.getFontSize(phoneNumberTextbox);
 	}
 
 	public String getPhoneNumberFontFamily() {
-		return CssHelper.getFontFamily(phoneNumberTextbox);
+		return WebElementHelper.getFontFamily(phoneNumberTextbox);
 	}
 
 	public String getPhoneNumberTextAlign() {
-		return CssHelper.getTextAlign(phoneNumberTextbox);
+		return WebElementHelper.getTextAlign(phoneNumberTextbox);
 	}
-
+	public String getPhoneNumberMaxLength() {
+		return WebElementHelper.getMaxLength(phoneNumberTextbox);
+	}
+	public String getPhoneNumberRequired() {
+		return WebElementHelper.getRequired(phoneNumberTextbox);
+	}
 
 	public String getSubmitText() {
 		return submitButton.getText();
 	}
 
 	public String getSubmitFontSize() {
-		return CssHelper.getFontSize(submitButton);
+		return WebElementHelper.getFontSize(submitButton);
 	}
 
 	public String getSubmitFontFamily() {
-		return CssHelper.getFontFamily(submitButton);
+		return WebElementHelper.getFontFamily(submitButton);
 	}
 
 	public String getSubmitTextAlign() {
-		return CssHelper.getTextAlign(submitButton);
+		return WebElementHelper.getTextAlign(submitButton);
 	}
 
 	
@@ -437,16 +509,14 @@ public class JukinMediaForm {
 	public void fillForm() {
 		advertisingRadioBtn.click();
 		rate1RadioBtn.click();
-		recommendRadioButtons.get(0).click();
+		yesRadioBtn.click();
 		firstNameTextbox.sendKeys("Jigs");
 		lastNameTextbox.sendKeys("varsada");
 		emailTextbox.sendKeys("test@gmail.com");
 		phoneNumberTextbox.sendKeys("898989");
 	}
 	
-	public List<WebElement> getRecommendRadioButtons() {
-		return recommendRadioButtons;
-	}
+
 
 	public boolean verifySubmitButton() {
 		WebElement sucessPopUp = driver.findElement(By.xpath("//h1[contains(text(),'successfully')]"));
@@ -455,15 +525,5 @@ public class JukinMediaForm {
 	}
 	
 
-	public boolean isDisplayedWhy() {
-		return ele7AWhy.isDisplayed();
-	}
-	
-	public boolean isDisplayedNot() {
-		return ele7Anot.isDisplayed();
-	}
-	
-	public boolean isDisplayedTextArea() {
-		return text7A.isDisplayed();
-	}
+
 }

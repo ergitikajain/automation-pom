@@ -19,7 +19,7 @@ public class JukinMediaFormValidationTest extends TestBaseSetup {
 
 	private WebDriver driver;
 	JukinMediaForm jukinMediaForm;
-	JukinMediaPopup junJukinMediaPopup;
+	JukinMediaPopup jukinMediaPopup;
 
 	@BeforeClass
 	public void setUp() {
@@ -36,21 +36,6 @@ public class JukinMediaFormValidationTest extends TestBaseSetup {
 		assertEquals(jukinMediaForm.getPhoneError(), "Please enter phone number.");
 	}
 	
-	@Test(priority=1)
-	public void verifyNoReccommendation() {
-		jukinMediaForm.getRecommendRadioButtons().get(0).click();
-		Assert.assertFalse(jukinMediaForm.isDisplayedWhy());
-		Assert.assertFalse(jukinMediaForm.isDisplayedNot());
-		Assert.assertFalse(jukinMediaForm.isDisplayedTextArea());
-		
-		jukinMediaForm.getRecommendRadioButtons().get(1).click();
-		Assert.assertTrue(jukinMediaForm.isDisplayedWhy());
-		Assert.assertTrue(jukinMediaForm.isDisplayedNot());
-		Assert.assertTrue(jukinMediaForm.isDisplayedTextArea());
-		
-	}
-	
-
 	@Test(priority=3)
 	public void submitFilledForm() {
 		jukinMediaForm.fillForm();
@@ -59,5 +44,27 @@ public class JukinMediaFormValidationTest extends TestBaseSetup {
 		Assert.assertTrue(jukinMediaForm.verifySubmitButton());
 	}
 	
+	@Test
+	public void verifyPopUpCloseBtn(){
+		jukinMediaForm.clickMailingList();
+		jukinMediaPopup = new JukinMediaPopup(driver);
+		assertEquals(jukinMediaPopup.getSignUpLabelText(),
+				"Sign Up for Out Newsleter");
+		jukinMediaPopup.clickCloseBtn();
+		assertEquals(jukinMediaForm.getCompanyNameText(),
+				"ACME Vacuum Cleaner & Anvil Co.");
+			
+	}
 	
+	@Test
+	public void verifyPopUpSignUpBtn(){
+		jukinMediaForm.clickMailingList();
+		jukinMediaPopup = new JukinMediaPopup(driver);
+		assertEquals(jukinMediaPopup.getSignUpLabelText(),
+				"Sign Up for Out Newsleter");
+		jukinMediaPopup.clickSignupBtn();
+		assertEquals(jukinMediaForm.getCompanyNameText(),
+				"ACME Vacuum Cleaner & Anvil Co.");
+			
+	}
 }
