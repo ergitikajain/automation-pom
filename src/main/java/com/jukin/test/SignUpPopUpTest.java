@@ -122,10 +122,4 @@ public class SignUpPopUpTest extends TestBaseSetup {
 		softAssert.assertAll();
 	}
 
-	@AfterTest
-	public void close() {
-		System.out.println("close pop up");
-
-	}
-
 }
