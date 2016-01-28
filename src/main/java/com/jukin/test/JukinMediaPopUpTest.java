@@ -8,18 +8,25 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import com.jukin.pageobjects.JukinMediaForm;
+import com.jukin.pageobjects.JukinMediaHomePage;
 import com.jukin.pageobjects.JukinMediaLogin;
 import com.jukin.pageobjects.JukinMediaPopup;
 import com.jukin.test.base.TestBaseSetup;
 
 public class JukinMediaPopUpTest extends TestBaseSetup {
 
-	private static final String arialFontFamily = "Arial,sans-serif";
 	private WebDriver driver;
-	private SoftAssert softAssert ;
-	JukinMediaForm jukinMediaForm;
-	JukinMediaPopup junJukinMediaPopup;
+	private SoftAssert softAssert;
+	JukinMediaHomePage jukinMediaHomePage;
+	JukinMediaPopup jukinMediaPopup;
+
+	String invalidEmailAddress[] = { "test", "test.com", "test@com",
+			"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabb@test.com" };
+
+	String validEmailAddress[] = {
+			"test@gmail.com",
+			"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@test.com",
+			"TEST@GMAIL.COM", "TET234@GMAIL.com", "test123#@gmail.com" };
 
 	@BeforeClass
 	public void setUp() {
@@ -27,69 +34,56 @@ public class JukinMediaPopUpTest extends TestBaseSetup {
 		JukinMediaLogin loginPage = new JukinMediaLogin(driver);
 		loginPage.loginToJukinMedia("jukinmedia", "qatest");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		jukinMediaForm = new JukinMediaForm(driver);
+		jukinMediaHomePage = new JukinMediaHomePage(driver);
+
 	}
 
-	@Test(priority = 0)
-	public void clickMailingListLink() {
-		jukinMediaForm.clickMailingList();
-		junJukinMediaPopup = new JukinMediaPopup(driver);
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		Assert.assertEquals(junJukinMediaPopup.getSignUpLabelText(),
-				"Sign Up for Our Newsleter");
-	}
+	@Test(priority=0)
+	public void validateInvalidEmailAddress() {
 
-	@Test
-	public void validateSignUpLabelStyle() {
 		softAssert = new SoftAssert();
-		softAssert.assertEquals(junJukinMediaPopup.getSignUpLabelText(),
-				"Sign Up for Our Newsleter");
-		softAssert.assertEquals(junJukinMediaPopup.getSignUpLabelFontFamily(),
-				arialFontFamily);
-		softAssert.assertEquals(junJukinMediaPopup.getSignUpLabelFontSize(), "18px");
-		softAssert.assertEquals(junJukinMediaPopup.getSignUpLabelTextAlign(), "center");
+		for (String email : invalidEmailAddress) {
+			if (jukinMediaPopup==null
+					&& jukinMediaHomePage.getCompanyNameText().contains("ACME")) {
+				System.out.println("On home page...lets click mailing list");
+				jukinMediaHomePage.clickMailingList();
+				jukinMediaPopup = new JukinMediaPopup(driver);
+				driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+			}
+			System.out.println("Entering email..." + email);
+
+			jukinMediaPopup.setSignUpEmail(email);
+			jukinMediaPopup.clickSignupBtn();
+			softAssert.assertTrue(jukinMediaPopup.getSignUpLabelText()
+					.contains("Sign Up"));
+
+		}
+
 		softAssert.assertAll();
 	}
 
-	@Test
-	public void validateSignUpEmailStyle() {
+	@Test(priority=1)
+	public void validateValidEmailAddress() {
+
 		softAssert = new SoftAssert();
-		softAssert.assertEquals(junJukinMediaPopup.getSignUpEmailGhostText(),
-				"Email Address *");
-		softAssert.assertEquals(junJukinMediaPopup.getSignUpEmailFontFamily(),
-				arialFontFamily);
-		softAssert.assertEquals(junJukinMediaPopup.getSignUpEmailFontSize(), "14px");
-		softAssert.assertEquals(junJukinMediaPopup.getSignUpEmailTextAlign(), "start");
-		softAssert.assertEquals(junJukinMediaPopup.getSignUpEmailMaxLength(), "255");
+		for (String email : validEmailAddress) {
+			if (jukinMediaPopup==null
+					&& jukinMediaHomePage.getCompanyNameText().contains("ACME")) {
+				System.out.println("On home page...lets click mailing list");
+				jukinMediaHomePage.clickMailingList();
+				jukinMediaPopup = new JukinMediaPopup(driver);
+				driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+			}
+			driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+			System.out.println("Entering email..." + email);
+
+			jukinMediaPopup.setSignUpEmail(email);
+			jukinMediaPopup.clickSignupBtn();
+			softAssert.assertTrue(jukinMediaHomePage.getCompanyNameText()
+					.contains("ACME"));
+		}
+
 		softAssert.assertAll();
 	}
 
-	@Test
-	public void validateICertifyStyle() {
-		softAssert = new SoftAssert();
-		softAssert.assertEquals(junJukinMediaPopup.getCertifyCheckboxText(),
-				"I certify that I am 18 years of age or older *");
-		softAssert.assertEquals(junJukinMediaPopup.getCertifyCheckboxFontFamily(),
-				arialFontFamily);
-		softAssert.assertEquals(junJukinMediaPopup.getCertifyCheckboxFontSize(), "18px");
-		softAssert.assertEquals(junJukinMediaPopup.getCertifyCheckboxTextTextAlign(),
-				"center");
-		softAssert.assertAll();
-	}
-
-	@Test
-	public void validateSignUpBtnStyle() {
-		softAssert = new SoftAssert();
-		softAssert.assertEquals(junJukinMediaPopup.getSignUpBtnAlignment(), "center");
-		softAssert.assertAll();
-	}
-	
-	@Test
-	public void validateCloseBtnStyle() {
-		softAssert = new SoftAssert();
-		softAssert.assertEquals(junJukinMediaPopup.getCloseBtnAlignment(), "right");
-		softAssert.assertAll();
-	}
-	
-	
 }

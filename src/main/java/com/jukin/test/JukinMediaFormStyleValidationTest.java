@@ -8,16 +8,16 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import com.jukin.pageobjects.JukinMediaForm;
+import com.jukin.pageobjects.JukinMediaHomePage;
 import com.jukin.pageobjects.JukinMediaLogin;
 import com.jukin.test.base.TestBaseSetup;
 
 public class JukinMediaFormStyleValidationTest extends TestBaseSetup {
 
-	private static final String arialFontFamily = "Arial,sans-serif";
+	private static final String arialFont = "Arial";
 	private SoftAssert softAssert ;
 	private WebDriver driver;
-	JukinMediaForm jukinMediaForm;
+	JukinMediaHomePage jukinMediaForm;
     
     
 	@BeforeClass
@@ -26,7 +26,7 @@ public class JukinMediaFormStyleValidationTest extends TestBaseSetup {
 		JukinMediaLogin loginPage = new JukinMediaLogin(driver);
 		loginPage.loginToJukinMedia("jukinmedia", "qatest");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		jukinMediaForm = new JukinMediaForm(driver);
+		jukinMediaForm = new JukinMediaHomePage(driver);
 	}
 
 	@Test
@@ -40,7 +40,7 @@ public class JukinMediaFormStyleValidationTest extends TestBaseSetup {
 	@Test
 	public void validateCompanyMotoStyle() {
 		softAssert = new SoftAssert();
-		softAssert.assertEquals(jukinMediaForm.getCompanyMotoFontFamily(), arialFontFamily);
+		softAssert.assertTrue(jukinMediaForm.getCompanyMotoFontFamily().contains(arialFont));
 		softAssert.assertEquals(jukinMediaForm.getCompanyMotoFontStyle(), "italic");
 		softAssert.assertEquals(jukinMediaForm.getCompanyMotoFontSize(), "21px");
 		softAssert.assertEquals(jukinMediaForm.getCompanyMotoTextAlign(), "center");
@@ -52,7 +52,7 @@ public class JukinMediaFormStyleValidationTest extends TestBaseSetup {
 		softAssert = new SoftAssert();
 		softAssert.assertEquals(jukinMediaForm.getCompanyNameText(),
 				"ACME Vacuum Cleaner & Anvil Co.");
-		softAssert.assertEquals(jukinMediaForm.getCompanyNameFontFamily(), arialFontFamily);
+		softAssert.assertTrue(jukinMediaForm.getCompanyNameFontFamily().contains(arialFont));
 		softAssert.assertEquals(jukinMediaForm.getCompanyNameFontSize(), "30px");
 		softAssert.assertEquals(jukinMediaForm.getCompanyNameTextAlign(), "center");
 		softAssert.assertAll();
@@ -63,7 +63,7 @@ public class JukinMediaFormStyleValidationTest extends TestBaseSetup {
 		softAssert = new SoftAssert();
 		softAssert.assertEquals(jukinMediaForm.getHowDidYouHearAboutText(),
 				"How did you hear about ACME VC&A Co.? *");
-		softAssert.assertEquals(jukinMediaForm.getHowDidYouHearAboutFontFamily(), arialFontFamily);
+		softAssert.assertTrue(jukinMediaForm.getHowDidYouHearAboutFontFamily().contains(arialFont));
 		softAssert.assertEquals(jukinMediaForm.getHowDidYouHearAboutFontSize(), "18px");
 		softAssert.assertEquals(jukinMediaForm.getHowDidYouHearAboutTextAlign(), "start");
 		softAssert.assertAll();
@@ -73,15 +73,15 @@ public class JukinMediaFormStyleValidationTest extends TestBaseSetup {
 	public void validateHowDidYouHearAboutOptionsStyle() {
 		softAssert = new SoftAssert();
 		softAssert.assertTrue(jukinMediaForm.getSocialMediaRadioBtn().isSelected());
-		softAssert.assertEquals(jukinMediaForm.getSocialMediaFontFamily(), arialFontFamily);
+		softAssert.assertTrue(jukinMediaForm.getSocialMediaFontFamily().contains(arialFont));
 		softAssert.assertEquals(jukinMediaForm.getSocialMediaFontSize(), "14px");
-		softAssert.assertEquals(jukinMediaForm.getAdvertisingFontFamily(), arialFontFamily);
+		softAssert.assertTrue(jukinMediaForm.getAdvertisingFontFamily().contains(arialFont));
 		softAssert.assertEquals(jukinMediaForm.getAdvertisingFontSize(), "14px");
-		softAssert.assertEquals(jukinMediaForm.getSearchEngineFontFamily(), arialFontFamily);
+		softAssert.assertTrue(jukinMediaForm.getSearchEngineFontFamily().contains(arialFont));
 		softAssert.assertEquals(jukinMediaForm.getSearchEngineFontSize(), "14px");
-		softAssert.assertEquals(jukinMediaForm.getFriendFontFamily(), arialFontFamily);
+		softAssert.assertTrue(jukinMediaForm.getFriendFontFamily().contains(arialFont));
 		softAssert.assertEquals(jukinMediaForm.getFriendFontSize(), "14px");
-		softAssert.assertEquals(jukinMediaForm.getOtherFontFamily(), arialFontFamily);
+		softAssert.assertTrue(jukinMediaForm.getOtherFontFamily().contains(arialFont));
 		softAssert.assertEquals(jukinMediaForm.getOtherFontSize(), "14px");
 		softAssert.assertAll();
 	}
@@ -105,7 +105,7 @@ public class JukinMediaFormStyleValidationTest extends TestBaseSetup {
 		softAssert = new SoftAssert();
 		softAssert.assertEquals(jukinMediaForm.getRateYourExperienceText(),
 				"Rate your overall experience (1 - Very Poor, 5 - Very Good) *:");
-		softAssert.assertEquals(jukinMediaForm.getRateYourExperienceFontFamily(), arialFontFamily);
+		softAssert.assertTrue(jukinMediaForm.getRateYourExperienceFontFamily().contains(arialFont));
 		softAssert.assertEquals(jukinMediaForm.getRateYourExperienceFontSize(), "28px");
 		softAssert.assertEquals(jukinMediaForm.getRateYourExperienceTextAlign(), "start");
 		softAssert.assertAll();
@@ -114,15 +114,15 @@ public class JukinMediaFormStyleValidationTest extends TestBaseSetup {
 	@Test
 	public void validateRateYourExperieneceOptionsStyle() {
 		softAssert = new SoftAssert();
-		softAssert.assertEquals(jukinMediaForm.getRate1FontFamily(), arialFontFamily);
+		softAssert.assertTrue(jukinMediaForm.getRate1FontFamily().contains(arialFont));
 		softAssert.assertEquals(jukinMediaForm.getRate1FontSize(), "14px");
-		softAssert.assertEquals(jukinMediaForm.getRate2FontFamily(), arialFontFamily);
+		softAssert.assertTrue(jukinMediaForm.getRate2FontFamily().contains(arialFont));
 		softAssert.assertEquals(jukinMediaForm.getRate2FontSize(), "14px");
-		softAssert.assertEquals(jukinMediaForm.getRate3FontFamily(), arialFontFamily);
+		softAssert.assertTrue(jukinMediaForm.getRate3FontFamily().contains(arialFont));
 		softAssert.assertEquals(jukinMediaForm.getRate3FontSize(), "14px");
-		softAssert.assertEquals(jukinMediaForm.getRate4FontFamily(), arialFontFamily);
+		softAssert.assertTrue(jukinMediaForm.getRate4FontFamily().contains(arialFont));
 		softAssert.assertEquals(jukinMediaForm.getRate4FontSize(), "14px");
-		softAssert.assertEquals(jukinMediaForm.getRate5FontFamily(), arialFontFamily);
+		softAssert.assertTrue(jukinMediaForm.getRate5FontFamily().contains(arialFont));
 		softAssert.assertEquals(jukinMediaForm.getRate5FontSize(), "14px");
 		softAssert.assertAll();
 	}
@@ -132,7 +132,7 @@ public class JukinMediaFormStyleValidationTest extends TestBaseSetup {
 		softAssert = new SoftAssert();
 		softAssert.assertEquals(jukinMediaForm.getWouldYouRecommendText(),
 				"Would you recommend us to your friends? (required)");
-		softAssert.assertEquals(jukinMediaForm.getWouldYouRecommendFontFamily(), arialFontFamily);
+		softAssert.assertTrue(jukinMediaForm.getWouldYouRecommendFontFamily().contains(arialFont));
 		softAssert.assertEquals(jukinMediaForm.getWouldYouRecommendFontSize(), "18px");
 		softAssert.assertEquals(jukinMediaForm.getWouldYouRecommendTextAlign(), "start");
 		softAssert.assertAll();
@@ -141,9 +141,9 @@ public class JukinMediaFormStyleValidationTest extends TestBaseSetup {
 	@Test
 	public void validateWouldYouReccomendOptionsStyle() {
 		softAssert = new SoftAssert();
-		softAssert.assertEquals(jukinMediaForm.getYesFontFamily(), arialFontFamily);
+		softAssert.assertTrue(jukinMediaForm.getYesFontFamily().contains(arialFont));
 		softAssert.assertEquals(jukinMediaForm.getYesFontSize(), "14px");
-		softAssert.assertEquals(jukinMediaForm.getNoFontFamily(), arialFontFamily);
+		softAssert.assertTrue(jukinMediaForm.getNoFontFamily().contains(arialFont));
 		softAssert.assertEquals(jukinMediaForm.getNoFontSize(), "14px");
 		softAssert.assertAll();
 	}
@@ -179,7 +179,7 @@ public class JukinMediaFormStyleValidationTest extends TestBaseSetup {
 	public void validateFirstNameStyle() {
 		softAssert = new SoftAssert();
 		softAssert.assertEquals(jukinMediaForm.getFirstNameGhostText(), "First Name *");
-		softAssert.assertEquals(jukinMediaForm.getFirstNameFontFamily(), arialFontFamily);
+		softAssert.assertTrue(jukinMediaForm.getFirstNameFontFamily().contains(arialFont));
 		softAssert.assertEquals(jukinMediaForm.getFirstNameFontSize(), "14px");
 		softAssert.assertEquals(jukinMediaForm.getFirstNameTextAlign(), "start");
 		softAssert.assertEquals(jukinMediaForm.getFirstNameRequired(), "true");
@@ -192,7 +192,7 @@ public class JukinMediaFormStyleValidationTest extends TestBaseSetup {
 	public void validateLastNameStyle() {
 		softAssert = new SoftAssert();
 		softAssert.assertEquals(jukinMediaForm.getLastNameGhostText(), "Last Name *");
-		softAssert.assertEquals(jukinMediaForm.getLastNameFontFamily(), arialFontFamily);
+		softAssert.assertTrue(jukinMediaForm.getLastNameFontFamily().contains(arialFont));
 		softAssert.assertEquals(jukinMediaForm.getLastNameFontSize(), "14px");
 		softAssert.assertEquals(jukinMediaForm.getLastNameTextAlign(), "start");
 		softAssert.assertEquals(jukinMediaForm.getLastNameRequired(), "true");
@@ -204,7 +204,7 @@ public class JukinMediaFormStyleValidationTest extends TestBaseSetup {
 	public void validateEmailStyle() {
 		softAssert = new SoftAssert();
 		softAssert.assertEquals(jukinMediaForm.getEmailGhostText(), "Email *");
-		softAssert.assertEquals(jukinMediaForm.getEmailFontFamily(), arialFontFamily);
+		softAssert.assertTrue(jukinMediaForm.getEmailFontFamily().contains(arialFont));
 		softAssert.assertEquals(jukinMediaForm.getEmailFontSize(), "14px");
 		softAssert.assertEquals(jukinMediaForm.getEmailTextAlign(), "start");
 		softAssert.assertEquals(jukinMediaForm.getEmailRequired(), "true");
@@ -216,7 +216,7 @@ public class JukinMediaFormStyleValidationTest extends TestBaseSetup {
 	public void validatePhoneStyle() {
 		softAssert = new SoftAssert();
 		softAssert.assertEquals(jukinMediaForm.getPhoneNumberGhostText(), "Phone Number *");
-		softAssert.assertEquals(jukinMediaForm.getPhoneNumberFontFamily(), arialFontFamily);
+		softAssert.assertTrue(jukinMediaForm.getPhoneNumberFontFamily().contains(arialFont));
 		softAssert.assertEquals(jukinMediaForm.getPhoneNumberFontSize(), "14px");
 		softAssert.assertEquals(jukinMediaForm.getPhoneNumberTextAlign(), "start");
 		softAssert.assertEquals(jukinMediaForm.getPhoneNumberRequired(), "true");
@@ -227,7 +227,7 @@ public class JukinMediaFormStyleValidationTest extends TestBaseSetup {
 	@Test
 	public void validateMailingListStyle() {
 		softAssert = new SoftAssert();
-		softAssert.assertEquals(jukinMediaForm.getMailingListFontFamily(), arialFontFamily);
+		softAssert.assertTrue(jukinMediaForm.getMailingListFontFamily().contains(arialFont));
 		softAssert.assertEquals(jukinMediaForm.getMailingListFontSize(), "21px");
 		softAssert.assertAll();
 	}
@@ -236,7 +236,7 @@ public class JukinMediaFormStyleValidationTest extends TestBaseSetup {
 	public void validateSubmitButtonStyle() {
 		softAssert = new SoftAssert();
 		softAssert.assertEquals(jukinMediaForm.getSubmitText(), "Submit");
-		softAssert.assertEquals(jukinMediaForm.getSubmitFontFamily(), arialFontFamily);
+		softAssert.assertTrue(jukinMediaForm.getSubmitFontFamily().contains(arialFont));
 		softAssert.assertEquals(jukinMediaForm.getSubmitFontSize(), "24px");
 		softAssert.assertEquals(jukinMediaForm.getSubmitTextAlign(), "right");
 		softAssert.assertAll();

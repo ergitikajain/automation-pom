@@ -43,5 +43,9 @@ public class WebElementHelper {
 	public static String getRequired(WebElement webElement) {
 		return webElement.getAttribute("required");
 	}
+
+	public static String getColor(WebElement webElement) {
+		return webElement.getCssValue("color");
+	}
 	
 }

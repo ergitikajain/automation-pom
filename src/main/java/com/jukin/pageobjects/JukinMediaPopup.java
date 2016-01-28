@@ -29,7 +29,6 @@ public class JukinMediaPopup {
 	@FindBy(xpath = "//button[text()='Sign Up']/ancestor::div[1]")
 	WebElement signUpBtnAlign;
 	
-	
 	@FindBy(xpath = "//span[text()='×']/ancestor::button[1]")
 	WebElement closeBtn;
 
@@ -76,6 +75,9 @@ public class JukinMediaPopup {
 		return WebElementHelper.getMaxLength(signUpEmailTextbox);
 	}
 	
+	public void setSignUpEmail(String emailAddress) {
+		signUpEmailTextbox.sendKeys(emailAddress);
+	}
 	public String getCertifyCheckboxText() {
 		return certifyCheckboxText.getText();
 	}

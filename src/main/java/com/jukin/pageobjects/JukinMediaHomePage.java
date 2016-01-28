@@ -8,137 +8,131 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.jukin.util.WebElementHelper;
 
-public class JukinMediaForm {
+public class JukinMediaHomePage {
 
 	WebDriver driver;
 
-	@FindBy(xpath="//p[contains(text(),'ACME')]")
+	@FindBy(xpath = "//p[contains(text(),'ACME')]")
 	WebElement companyMoto;
 
-	@FindBy(xpath="//img")
+	@FindBy(xpath = "//img")
 	WebElement companyLogo;
 
-	@FindBy(xpath="//img/ancestor::div[1]")
+	@FindBy(xpath = "//img/ancestor::div[1]")
 	WebElement companyLogoAlign;
-	
-	@FindBy(xpath="//h1[contains(text(),'ACME')]")
+
+	@FindBy(xpath = "//h1[contains(text(),'ACME')]")
 	WebElement companyName;
-	
-	@FindBy(className="pointer")
+
+	@FindBy(className = "pointer")
 	WebElement mailingList;
 
-	@FindBy(xpath="//label[contains(text(),'How did you')]")
+	@FindBy(xpath = "//label[contains(text(),'How did you')]")
 	WebElement howDidYouHearAbout;
 
-	@FindBy(xpath="//span[text()='Social Media']")
+	@FindBy(xpath = "//span[text()='Social Media']")
 	WebElement socialMedia;
 
-	@FindBy(xpath="//span[text()='Advertising']")
+	@FindBy(xpath = "//span[text()='Advertising']")
 	WebElement advertising;
 
-	@FindBy(xpath="//span[text()='Search Engine']")
+	@FindBy(xpath = "//span[text()='Search Engine']")
 	WebElement searchEngine;
 
-	@FindBy(xpath="//span[text()='Friend']")
+	@FindBy(xpath = "//span[text()='Friend']")
 	WebElement friend;
 
-	@FindBy(id="other")
+	@FindBy(id = "other")
 	WebElement other;
 
-
-	@FindBy(xpath="//span[text()='Social Media']/preceding-sibling::input[1]")
+	@FindBy(xpath = "//span[text()='Social Media']/preceding-sibling::input[1]")
 	WebElement socialMediaRadioBtn;
 
-	@FindBy(xpath="//input[@value='Advertising']")
+	@FindBy(xpath = "//input[@value='Advertising']")
 	WebElement advertisingRadioBtn;
 
-	@FindBy(xpath="//input[@value='Search Engine']")
+	@FindBy(xpath = "//input[@value='Search Engine']")
 	WebElement searchEngineRadioBtn;
 
-	@FindBy(xpath="//input[@value='Friend']")
+	@FindBy(xpath = "//input[@value='Friend']")
 	WebElement friendRadioBtn;
 
-	@FindBy(xpath="//input[@value='other']")
+	@FindBy(xpath = "//input[@value='other']")
 	WebElement otherRadioBtn;
 
-
-	@FindBy(xpath="//label[contains(text(),'Rate')]")
+	@FindBy(xpath = "//label[contains(text(),'Rate')]")
 	WebElement rateYourExperience;
 
-	@FindBy(xpath="//span[text()='1']")
+	@FindBy(xpath = "//span[text()='1']")
 	WebElement rate1;
 
-	@FindBy(xpath="//span[text()='2']")
+	@FindBy(xpath = "//span[text()='2']")
 	WebElement rate2;
 
-	@FindBy(xpath="//span[text()='3']")
+	@FindBy(xpath = "//span[text()='3']")
 	WebElement rate3;
 
-	@FindBy(xpath="//span[text()='4']")
+	@FindBy(xpath = "//span[text()='4']")
 	WebElement rate4;
 
-	@FindBy(xpath="//span[text()='5']")
+	@FindBy(xpath = "//span[text()='5']")
 	WebElement rate5;
 
-	@FindBy(xpath="//span[text()='1']/preceding-sibling::input[1]")
+	@FindBy(xpath = "//span[text()='1']/preceding-sibling::input[1]")
 	WebElement rate1RadioBtn;
 
-	@FindBy(xpath="//span[text()='2']/preceding-sibling::input[1]")
+	@FindBy(xpath = "//span[text()='2']/preceding-sibling::input[1]")
 	WebElement rate2RadioBtn;
 
-	@FindBy(xpath="//span[text()='3']/preceding-sibling::input[1]")
+	@FindBy(xpath = "//span[text()='3']/preceding-sibling::input[1]")
 	WebElement rate3RadioBtn;
 
-	@FindBy(xpath="//span[text()='4']/preceding-sibling::input[1]")
+	@FindBy(xpath = "//span[text()='4']/preceding-sibling::input[1]")
 	WebElement rate4RadioBtn;
 
-	@FindBy(xpath="//span[text()='5']/preceding-sibling::input[1]")
+	@FindBy(xpath = "//span[text()='5']/preceding-sibling::input[1]")
 	WebElement rate5RadioBtn;
 
-	@FindBy(xpath="//label[contains(text(),'Would')]")
+	@FindBy(xpath = "//label[contains(text(),'Would')]")
 	WebElement wouldYouRecommend;
 
-	@FindBy(xpath="//span[text()='Yes']")
+	@FindBy(xpath = "//span[text()='Yes']")
 	WebElement yes;
 
-	@FindBy(xpath="//span[text()='No']")
+	@FindBy(xpath = "//span[text()='No']")
 	WebElement no;
 
-
-	@FindBy(xpath="//span[text()='Yes']/preceding-sibling::input[1]")
+	@FindBy(xpath = "//span[text()='Yes']/preceding-sibling::input[1]")
 	WebElement yesRadioBtn;
 
-	@FindBy(xpath="//span[text()='No']/preceding-sibling::input[1]")
+	@FindBy(xpath = "//span[text()='No']/preceding-sibling::input[1]")
 	WebElement noRadioBtn;
-	
-	@FindBy(xpath="//b[text()='Why']")
+
+	@FindBy(xpath = "//b[text()='Why']")
 	WebElement noOptionWhy;
-	
-	@FindBy(xpath="//label[text()=' not? *']")
+
+	@FindBy(xpath = "//label[text()=' not? *']")
 	WebElement noOptionNot;
-	
-	@FindBy(xpath="//textarea")
-	WebElement reasoningTextarea ;
-	
-	@FindBy(xpath="//b[contains(text(),'Contact')]/ancestor::form[1]/div[5]/div[1]/input")
+
+	@FindBy(xpath = "//textarea")
+	WebElement reasoningTextarea;
+
+	@FindBy(xpath = "//b[contains(text(),'Contact')]/ancestor::form[1]/div[5]/div[1]/input")
 	WebElement firstNameTextbox;
 
-	@FindBy(xpath="//b[contains(text(),'Contact')]/ancestor::form[1]/div[5]/div[2]/input")
+	@FindBy(xpath = "//b[contains(text(),'Contact')]/ancestor::form[1]/div[5]/div[2]/input")
 	WebElement lastNameTextbox;
 
-	@FindBy(xpath="//b[contains(text(),'Contact')]/ancestor::form[1]/div[6]/div[1]/input")
+	@FindBy(xpath = "//b[contains(text(),'Contact')]/ancestor::form[1]/div[6]/div[1]/input")
 	WebElement emailTextbox;
 
-	@FindBy(id ="phone")
+	@FindBy(id = "phone")
 	WebElement phoneNumberTextbox;
 
-	@FindBy(xpath="//button[text()='Submit']")
-	WebElement submitButton;	
-	
+	@FindBy(xpath = "//button[text()='Submit']")
+	WebElement submitButton;
 
-	
-	
-	public JukinMediaForm(WebDriver driver) {
+	public JukinMediaHomePage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
@@ -171,8 +165,6 @@ public class JukinMediaForm {
 		return WebElementHelper.getTextAlign(companyMoto);
 	}
 
-
-
 	public String getCompanyNameText() {
 		return companyName.getText();
 	}
@@ -189,7 +181,6 @@ public class JukinMediaForm {
 		return WebElementHelper.getTextAlign(companyName);
 	}
 
-	
 	public String getMailingListFontSize() {
 		return WebElementHelper.getFontSize(mailingList);
 	}
@@ -197,7 +188,14 @@ public class JukinMediaForm {
 	public String getMailingListFontFamily() {
 		return WebElementHelper.getFontFamily(mailingList);
 	}
-	
+
+	public WebElement getMailingList() {
+		return mailingList;
+	}
+
+	public String getMailingListColor() {
+		return WebElementHelper.getColor(mailingList);
+	}
 
 	public String getHowDidYouHearAboutText() {
 		return howDidYouHearAbout.getText();
@@ -218,7 +216,7 @@ public class JukinMediaForm {
 	public WebElement getSocialMediaRadioBtn() {
 		return socialMediaRadioBtn;
 	}
-	
+
 	public String getSocialMediaFontSize() {
 		return WebElementHelper.getFontSize(socialMedia);
 	}
@@ -254,22 +252,26 @@ public class JukinMediaForm {
 	public WebElement getOtherRadioBtn() {
 		return otherRadioBtn;
 	}
+
 	public String getOtherGhostText() {
 		return WebElementHelper.getTextboxPlaceholder(other);
 	}
+
 	public String getOtherFontSize() {
 		return WebElementHelper.getFontSize(other);
 	}
+
 	public String getOtherFontFamily() {
 		return WebElementHelper.getFontFamily(other);
 	}
+
 	public String getOtherMaxLength() {
 		return WebElementHelper.getMaxLength(other);
 	}
+
 	public String getOtherRequired() {
 		return WebElementHelper.getRequired(other);
 	}
-
 
 	public String getRateYourExperienceText() {
 		return rateYourExperience.getText();
@@ -286,6 +288,7 @@ public class JukinMediaForm {
 	public String getRateYourExperienceTextAlign() {
 		return WebElementHelper.getTextAlign(rateYourExperience);
 	}
+
 	public String getRate1FontSize() {
 		return WebElementHelper.getFontSize(rate1);
 	}
@@ -293,6 +296,7 @@ public class JukinMediaForm {
 	public String getRate1FontFamily() {
 		return WebElementHelper.getFontFamily(rate1);
 	}
+
 	public String getRate2FontSize() {
 		return WebElementHelper.getFontSize(rate2);
 	}
@@ -300,6 +304,7 @@ public class JukinMediaForm {
 	public String getRate2FontFamily() {
 		return WebElementHelper.getFontFamily(rate2);
 	}
+
 	public String getRate3FontSize() {
 		return WebElementHelper.getFontSize(rate3);
 	}
@@ -307,6 +312,7 @@ public class JukinMediaForm {
 	public String getRate3FontFamily() {
 		return WebElementHelper.getFontFamily(rate3);
 	}
+
 	public String getRate4FontSize() {
 		return WebElementHelper.getFontSize(rate4);
 	}
@@ -314,6 +320,7 @@ public class JukinMediaForm {
 	public String getRate4FontFamily() {
 		return WebElementHelper.getFontFamily(rate4);
 	}
+
 	public String getRate5FontSize() {
 		return WebElementHelper.getFontSize(rate5);
 	}
@@ -321,7 +328,6 @@ public class JukinMediaForm {
 	public String getRate5FontFamily() {
 		return WebElementHelper.getFontFamily(rate5);
 	}
-
 
 	public String getWouldYouRecommendText() {
 		return wouldYouRecommend.getText();
@@ -334,6 +340,7 @@ public class JukinMediaForm {
 	public String getYesFontFamily() {
 		return WebElementHelper.getFontFamily(yes);
 	}
+
 	public String getNoFontSize() {
 		return WebElementHelper.getFontSize(no);
 	}
@@ -341,15 +348,15 @@ public class JukinMediaForm {
 	public String getNoFontFamily() {
 		return WebElementHelper.getFontFamily(no);
 	}
-	
+
 	public boolean isDisplayedWhy() {
 		return noOptionWhy.isDisplayed();
 	}
-	
+
 	public boolean isDisplayedNot() {
 		return noOptionNot.isDisplayed();
 	}
-	
+
 	public WebElement getYesRadioBtn() {
 		return yesRadioBtn;
 	}
@@ -361,18 +368,19 @@ public class JukinMediaForm {
 	public boolean isDisplayedTextArea() {
 		return reasoningTextarea.isDisplayed();
 	}
-	
+
 	public String getReasoningTextareaGhostText() {
 		return WebElementHelper.getTextboxPlaceholder(reasoningTextarea);
 	}
-	
+
 	public String getReasoningTextareaMaxLength() {
 		return WebElementHelper.getMaxLength(reasoningTextarea);
 	}
+
 	public String getReasoningTextareaRequired() {
 		return WebElementHelper.getRequired(reasoningTextarea);
 	}
-	
+
 	public String getWouldYouRecommendFontSize() {
 		return WebElementHelper.getFontSize(wouldYouRecommend);
 	}
@@ -384,7 +392,6 @@ public class JukinMediaForm {
 	public String getWouldYouRecommendTextAlign() {
 		return WebElementHelper.getTextAlign(wouldYouRecommend);
 	}
-
 
 	public String getFirstNameGhostText() {
 		return WebElementHelper.getTextboxPlaceholder(firstNameTextbox);
@@ -401,9 +408,11 @@ public class JukinMediaForm {
 	public String getFirstNameTextAlign() {
 		return WebElementHelper.getTextAlign(firstNameTextbox);
 	}
+
 	public String getFirstNameMaxLength() {
 		return WebElementHelper.getMaxLength(firstNameTextbox);
 	}
+
 	public String getFirstNameRequired() {
 		return WebElementHelper.getRequired(firstNameTextbox);
 	}
@@ -427,6 +436,7 @@ public class JukinMediaForm {
 	public String getLastNameMaxLength() {
 		return WebElementHelper.getMaxLength(lastNameTextbox);
 	}
+
 	public String getLastNameRequired() {
 		return WebElementHelper.getRequired(lastNameTextbox);
 	}
@@ -446,13 +456,15 @@ public class JukinMediaForm {
 	public String getEmailTextAlign() {
 		return WebElementHelper.getTextAlign(emailTextbox);
 	}
+
 	public String getEmailMaxLength() {
 		return WebElementHelper.getMaxLength(emailTextbox);
 	}
+
 	public String getEmailRequired() {
 		return WebElementHelper.getRequired(emailTextbox);
 	}
-	
+
 	public String getPhoneNumberGhostText() {
 		return WebElementHelper.getTextboxPlaceholder(phoneNumberTextbox);
 	}
@@ -468,9 +480,11 @@ public class JukinMediaForm {
 	public String getPhoneNumberTextAlign() {
 		return WebElementHelper.getTextAlign(phoneNumberTextbox);
 	}
+
 	public String getPhoneNumberMaxLength() {
 		return WebElementHelper.getMaxLength(phoneNumberTextbox);
 	}
+
 	public String getPhoneNumberRequired() {
 		return WebElementHelper.getRequired(phoneNumberTextbox);
 	}
@@ -491,21 +505,20 @@ public class JukinMediaForm {
 		return WebElementHelper.getTextAlign(submitButton);
 	}
 
-	
-	
-	
-	public void clickSubmit(){
+	public void clickSubmit() {
 		this.submitButton.click();
 	}
-	
-	public void clickMailingList(){
+
+	public void clickMailingList() {
 		this.mailingList.click();
 	}
+
 	public String getPhoneError() {
-		WebElement phoneError = driver.findElement(By.xpath("//p[@class='phoneError']"));
+		WebElement phoneError = driver.findElement(By
+				.xpath("//p[@class='phoneError']"));
 		return phoneError.getText();
 	}
-	
+
 	public void fillForm() {
 		advertisingRadioBtn.click();
 		rate1RadioBtn.click();
@@ -515,15 +528,12 @@ public class JukinMediaForm {
 		emailTextbox.sendKeys("test@gmail.com");
 		phoneNumberTextbox.sendKeys("898989");
 	}
-	
-
 
 	public boolean verifySubmitButton() {
-		WebElement sucessPopUp = driver.findElement(By.xpath("//h1[contains(text(),'successfully')]"));
+		WebElement sucessPopUp = driver.findElement(By
+				.xpath("//h1[contains(text(),'successfully')]"));
 		System.out.println(sucessPopUp.getText());
 		return true;
 	}
-	
-
 
 }

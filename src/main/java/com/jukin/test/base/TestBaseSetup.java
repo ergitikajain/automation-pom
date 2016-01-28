@@ -11,7 +11,8 @@ import org.testng.annotations.Parameters;
 public class TestBaseSetup {
 
 	private WebDriver driver;
-	static String driverPath = "C:\\Users\\Gitika.Jain\\Downloads\\chromedriver_win32\\";
+	static String driverPath = System.getProperty("user.dir") + "/drivers" ;
+	   
 
 	public WebDriver getDriver() {
 		return driver;
@@ -37,6 +38,7 @@ public class TestBaseSetup {
 
 	private static WebDriver initChromeDriver(String appURL) {
 		System.out.println("Launching google chrome with new profile..");
+		System.out.println("Current working directory : " + driverPath);;
 		System.setProperty("webdriver.chrome.driver", driverPath
 				+ "chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
@@ -54,7 +56,7 @@ public class TestBaseSetup {
 	}
 
 	private static WebDriver initSafariDriver(String appURL) {
-		System.out.println("Launching Firefox browser..");
+		System.out.println("Launching Safari browser..");
 		WebDriver driver = new SafariDriver();
 		driver.manage().window().maximize();
 		driver.navigate().to(appURL);

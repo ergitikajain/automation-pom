@@ -1,13 +1,34 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Page Object test">
+<suite name="Jukin Media Test Suite" thread-count="3" parallel="tests">
 	<parameter name="appURL" value="http://qatest.jukinmedia.com/#/" />
-	<parameter name="browserType" value="firefox" />
-	<test name="sample test">
+	<test name="firefoxTest">
+	    <parameter name="browserType" value="firefox" />
 		<classes>
 			<class name="com.jukin.test.JukinMediaLoginTest" />
 			<class name="com.jukin.test.JukinMediaFormStyleValidationTest" />
 			<class name="com.jukin.test.JukinMediaFormValidationTest" />
 			<class name="com.jukin.test.JukinMediaPopUpTest" />
+			<class name="com.jukin.test.JukinMediaPopUpEmailTest" />
+		</classes>
+	</test>
+	<test name="chromeTest">
+	    <parameter name="browserType" value="chrome" />
+		<classes>
+			<class name="com.jukin.test.JukinMediaLoginTest" />
+			<class name="com.jukin.test.JukinMediaFormStyleValidationTest" />
+			<class name="com.jukin.test.JukinMediaFormValidationTest" />
+			<class name="com.jukin.test.JukinMediaPopUpTest" />
+			<class name="com.jukin.test.JukinMediaPopUpEmailTest" />
+		</classes>
+	</test>
+	<test name="safariTest">
+	    <parameter name="browserType" value="safari" />
+		<classes>
+			<class name="com.jukin.test.JukinMediaLoginTest" />
+			<class name="com.jukin.test.JukinMediaFormStyleValidationTest" />
+			<class name="com.jukin.test.JukinMediaFormValidationTest" />
+			<class name="com.jukin.test.JukinMediaPopUpTest" />
+			<class name="com.jukin.test.JukinMediaPopUpEmailTest" />
 		</classes>
 	</test>
 </suite>
