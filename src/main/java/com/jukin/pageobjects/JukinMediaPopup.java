@@ -22,13 +22,13 @@ public class JukinMediaPopup {
 
 	@FindBy(xpath = "//label[contains(text(),'certify')]")
 	WebElement certifyCheckboxText;
-	
+
 	@FindBy(xpath = "//button[text()='Sign Up']")
 	WebElement signUpBtn;
-	
+
 	@FindBy(xpath = "//button[text()='Sign Up']/ancestor::div[1]")
 	WebElement signUpBtnAlign;
-	
+
 	@FindBy(xpath = "//span[text()='×']/ancestor::button[1]")
 	WebElement closeBtn;
 
@@ -53,8 +53,7 @@ public class JukinMediaPopup {
 	public String getSignUpLabelTextAlign() {
 		return WebElementHelper.getTextAlign(signUpLabel);
 	}
-	
-	
+
 	public String getSignUpEmailGhostText() {
 		return WebElementHelper.getTextboxPlaceholder(signUpEmailTextbox);
 	}
@@ -70,14 +69,15 @@ public class JukinMediaPopup {
 	public String getSignUpEmailTextAlign() {
 		return WebElementHelper.getTextAlign(signUpEmailTextbox);
 	}
-	
+
 	public String getSignUpEmailMaxLength() {
 		return WebElementHelper.getMaxLength(signUpEmailTextbox);
 	}
-	
+
 	public void setSignUpEmail(String emailAddress) {
 		signUpEmailTextbox.sendKeys(emailAddress);
 	}
+
 	public String getCertifyCheckboxText() {
 		return certifyCheckboxText.getText();
 	}
@@ -93,20 +93,25 @@ public class JukinMediaPopup {
 	public String getCertifyCheckboxTextTextAlign() {
 		return WebElementHelper.getTextAlign(certifyCheckboxText);
 	}
-	
+
 	public String getSignUpBtnAlignment() {
 		return WebElementHelper.getTextAlign(signUpBtnAlign);
 	}
-	
+
 	public String getCloseBtnAlignment() {
 		return WebElementHelper.getBtnAlign(closeBtn);
 	}
-	
+
 	public void clickCloseBtn() {
 		closeBtn.click();
 	}
-	
+
 	public void clickSignupBtn() {
 		signUpBtn.click();
 	}
+
+	public boolean verifyOnPopUp() {
+		return getSignUpLabelText().contains("Sign Up");
+	}
+
 }

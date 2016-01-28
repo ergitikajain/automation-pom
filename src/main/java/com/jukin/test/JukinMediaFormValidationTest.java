@@ -4,8 +4,6 @@ import static org.testng.Assert.assertEquals;
 
 import java.util.concurrent.TimeUnit;
 
-import javax.swing.JColorChooser;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.Color;
@@ -58,7 +56,7 @@ public class JukinMediaFormValidationTest extends TestBaseSetup {
 				+ beforHoverColorCode);
 
 		Actions action = new Actions(driver);
-		action.moveToElement(jukinMediaHomePage.getMailingList()).build().perform();
+		action.moveToElement(jukinMediaHomePage.getMailingList()).perform();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		Color afterHoverColor = Color.fromString(jukinMediaHomePage
 				.getMailingListColor());
@@ -72,11 +70,9 @@ public class JukinMediaFormValidationTest extends TestBaseSetup {
 	public void verifyPopUpCloseBtn() {
 		jukinMediaHomePage.clickMailingList();
 		jukinMediaPopup = new JukinMediaPopup(driver);
-		assertEquals(jukinMediaPopup.getSignUpLabelText(),
-				"Sign Up for Out Newsleter");
+		Assert.assertTrue(jukinMediaPopup.verifyOnPopUp());
 		jukinMediaPopup.clickCloseBtn();
-		assertEquals(jukinMediaHomePage.getCompanyNameText(),
-				"ACME Vacuum Cleaner & Anvil Co.");
+		Assert.assertTrue(jukinMediaHomePage.verifyOnHomePage());
 
 	}
 
@@ -84,11 +80,9 @@ public class JukinMediaFormValidationTest extends TestBaseSetup {
 	public void verifyPopUpSignUpBtn() {
 		jukinMediaHomePage.clickMailingList();
 		jukinMediaPopup = new JukinMediaPopup(driver);
-		assertEquals(jukinMediaPopup.getSignUpLabelText(),
-				"Sign Up for Out Newsleter");
+		Assert.assertTrue(jukinMediaPopup.verifyOnPopUp());
 		jukinMediaPopup.clickSignupBtn();
-		assertEquals(jukinMediaHomePage.getCompanyNameText(),
-				"ACME Vacuum Cleaner & Anvil Co.");
+		Assert.assertTrue(jukinMediaHomePage.verifyOnHomePage());
 
 	}
 

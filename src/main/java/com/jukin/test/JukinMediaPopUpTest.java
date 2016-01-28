@@ -3,7 +3,6 @@ package com.jukin.test;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -44,7 +43,7 @@ public class JukinMediaPopUpTest extends TestBaseSetup {
 		softAssert = new SoftAssert();
 		for (String email : invalidEmailAddress) {
 			if (jukinMediaPopup==null
-					&& jukinMediaHomePage.getCompanyNameText().contains("ACME")) {
+					&& jukinMediaHomePage.verifyOnHomePage()) {
 				System.out.println("On home page...lets click mailing list");
 				jukinMediaHomePage.clickMailingList();
 				jukinMediaPopup = new JukinMediaPopup(driver);
@@ -54,13 +53,13 @@ public class JukinMediaPopUpTest extends TestBaseSetup {
 
 			jukinMediaPopup.setSignUpEmail(email);
 			jukinMediaPopup.clickSignupBtn();
-			softAssert.assertTrue(jukinMediaPopup.getSignUpLabelText()
-					.contains("Sign Up"));
+			softAssert.assertTrue(jukinMediaPopup.verifyOnPopUp());
 
 		}
 
 		softAssert.assertAll();
 	}
+
 
 	@Test(priority=1)
 	public void validateValidEmailAddress() {
@@ -68,7 +67,7 @@ public class JukinMediaPopUpTest extends TestBaseSetup {
 		softAssert = new SoftAssert();
 		for (String email : validEmailAddress) {
 			if (jukinMediaPopup==null
-					&& jukinMediaHomePage.getCompanyNameText().contains("ACME")) {
+					&& jukinMediaHomePage.verifyOnHomePage()) {
 				System.out.println("On home page...lets click mailing list");
 				jukinMediaHomePage.clickMailingList();
 				jukinMediaPopup = new JukinMediaPopup(driver);
@@ -79,11 +78,11 @@ public class JukinMediaPopUpTest extends TestBaseSetup {
 
 			jukinMediaPopup.setSignUpEmail(email);
 			jukinMediaPopup.clickSignupBtn();
-			softAssert.assertTrue(jukinMediaHomePage.getCompanyNameText()
-					.contains("ACME"));
+			softAssert.assertTrue(jukinMediaHomePage.verifyOnHomePage());
 		}
 
 		softAssert.assertAll();
 	}
 
+	
 }

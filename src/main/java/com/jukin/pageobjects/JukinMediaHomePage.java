@@ -512,6 +512,12 @@ public class JukinMediaHomePage {
 	public void clickMailingList() {
 		this.mailingList.click();
 	}
+	
+	public boolean verifyOnHomePage() {
+		return getCompanyNameText()
+				.contains("ACME");
+	}
+
 
 	public String getPhoneError() {
 		WebElement phoneError = driver.findElement(By
