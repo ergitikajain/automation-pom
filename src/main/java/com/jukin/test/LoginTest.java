@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import com.jukin.pageobjects.JukinMediaLogin;
 import com.jukin.test.base.TestBaseSetup;
 
-public class JukinMediaLoginTest extends TestBaseSetup {
+public class LoginTest extends TestBaseSetup {
 
 	private WebDriver driver;
 
@@ -21,9 +21,7 @@ public class JukinMediaLoginTest extends TestBaseSetup {
 	public void loginTest() {
 		System.out.println("Login page test...");
 		JukinMediaLogin loginPage = new JukinMediaLogin(driver);
-		Assert.assertEquals(loginPage.getLoginTitle(),
-				"Login");
-		loginPage.loginToJukinMedia("jukinmedia", "qatest");
+		Assert.assertEquals(loginPage.getLoginTitle(), "Login");
+		loginPage.login("jukinmedia", "qatest");
 	}
-
 }

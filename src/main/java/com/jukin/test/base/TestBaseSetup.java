@@ -1,5 +1,7 @@
 package com.jukin.test.base;
 
+import java.io.File;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -11,7 +13,7 @@ import org.testng.annotations.Parameters;
 public class TestBaseSetup {
 
 	private WebDriver driver;
-	static String driverPath = System.getProperty("user.dir") + "/drivers" ;
+	static String driverPath = new File("").getAbsolutePath() + "\\drivers\\"  ;
 	   
 
 	public WebDriver getDriver() {

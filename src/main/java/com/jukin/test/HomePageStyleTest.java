@@ -12,7 +12,7 @@ import com.jukin.pageobjects.JukinMediaHomePage;
 import com.jukin.pageobjects.JukinMediaLogin;
 import com.jukin.test.base.TestBaseSetup;
 
-public class JukinMediaFormStyleValidationTest extends TestBaseSetup {
+public class HomePageStyleTest extends TestBaseSetup {
 
 	private static final String arialFont = "Arial";
 	private SoftAssert softAssert ;
@@ -24,7 +24,7 @@ public class JukinMediaFormStyleValidationTest extends TestBaseSetup {
 	public void setUp() {
 		driver = getDriver();
 		JukinMediaLogin loginPage = new JukinMediaLogin(driver);
-		loginPage.loginToJukinMedia("jukinmedia", "qatest");
+		loginPage.login("jukinmedia", "qatest");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		jukinMediaForm = new JukinMediaHomePage(driver);
 	}
@@ -92,7 +92,7 @@ public class JukinMediaFormStyleValidationTest extends TestBaseSetup {
 		softAssert = new SoftAssert();
 		softAssert.assertEquals(jukinMediaForm.getOtherGhostText(), "Other");
 		softAssert.assertFalse(jukinMediaForm.getOtherRadioBtn().isSelected());
-		softAssert.assertEquals(jukinMediaForm.getOtherRequired(), "");
+		softAssert.assertEquals(jukinMediaForm.getOtherDisable(), "true");
 		jukinMediaForm.getOtherRadioBtn().click();
 		softAssert.assertTrue(jukinMediaForm.getOtherRadioBtn().isSelected());
 		softAssert.assertEquals(jukinMediaForm.getOtherRequired(), "true");
@@ -238,7 +238,7 @@ public class JukinMediaFormStyleValidationTest extends TestBaseSetup {
 		softAssert.assertEquals(jukinMediaForm.getSubmitText(), "Submit");
 		softAssert.assertTrue(jukinMediaForm.getSubmitFontFamily().contains(arialFont));
 		softAssert.assertEquals(jukinMediaForm.getSubmitFontSize(), "24px");
-		softAssert.assertEquals(jukinMediaForm.getSubmitTextAlign(), "right");
+		softAssert.assertEquals(jukinMediaForm.getSubmitBtnAlign(), "right");
 		softAssert.assertAll();
 	}
 }

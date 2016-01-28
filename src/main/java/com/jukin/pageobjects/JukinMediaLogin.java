@@ -24,54 +24,28 @@ public class JukinMediaLogin {
 	public JukinMediaLogin(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
-
 	}
-
-	// Get the title of Login Page
 
 	public String getLoginTitle() {
 		return titleText.getText();
 	}
 
-	// Set user name in textbox
-
 	public void setUserName(String strUserName) {
 		loginUserName.sendKeys(strUserName);
 	}
-
-	// Set password in password textbox
 
 	public void setPassword(String strPassword) {
 		loginPassword.sendKeys(strPassword);
 	}
 
-	// Click on login button
-
 	public void clickLogin() {
 		loginButton.click();
 	}
 
-	/**
-	 * 
-	 * This POM method will be exposed in test case to login in the application
-	 * 
-	 * @param strUserName
-	 * 
-	 * @param strPasword
-	 * 
-	 * @return
-	 */
-
-	public void loginToJukinMedia(String strUserName, String strPasword) {
-		// Fill user name
+	public void login(String strUserName, String strPasword) {
 		this.setUserName(strUserName);
-
-		// Fill password
 		this.setPassword(strPasword);
-
-		// Click Login button
 		this.clickLogin();
-
 	}
 
 }

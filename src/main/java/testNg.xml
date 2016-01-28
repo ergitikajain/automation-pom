@@ -2,33 +2,33 @@
 <suite name="Jukin Media Test Suite" thread-count="3" parallel="tests">
 	<parameter name="appURL" value="http://qatest.jukinmedia.com/#/" />
 	<test name="firefoxTest">
-	    <parameter name="browserType" value="firefox" />
+		<parameter name="browserType" value="firefox" />
 		<classes>
-			<class name="com.jukin.test.JukinMediaLoginTest" />
-			<class name="com.jukin.test.JukinMediaFormStyleValidationTest" />
-			<class name="com.jukin.test.JukinMediaFormValidationTest" />
-			<class name="com.jukin.test.JukinMediaPopUpTest" />
-			<class name="com.jukin.test.JukinMediaPopUpEmailTest" />
+			<class name="com.jukin.test.LoginTest" />
+			<class name="com.jukin.test.HomePageStyleTest" />
+			<class name="com.jukin.test.HomePageTest" />
+			<class name="com.jukin.test.SignUpPopUpStyleTest" />
+			<class name="com.jukin.test.SignUpPopUpTest" />
 		</classes>
 	</test>
 	<test name="chromeTest">
-	    <parameter name="browserType" value="chrome" />
+		<parameter name="browserType" value="chrome" />
 		<classes>
-			<class name="com.jukin.test.JukinMediaLoginTest" />
-			<class name="com.jukin.test.JukinMediaFormStyleValidationTest" />
-			<class name="com.jukin.test.JukinMediaFormValidationTest" />
-			<class name="com.jukin.test.JukinMediaPopUpTest" />
-			<class name="com.jukin.test.JukinMediaPopUpEmailTest" />
+			<class name="com.jukin.test.LoginTest" />
+			<class name="com.jukin.test.HomePageStyleTest" />
+			<class name="com.jukin.test.HomePageTest" />
+			<class name="com.jukin.test.SignUpPopUpStyleTest" />
+			<class name="com.jukin.test.SignUpPopUpTest" />
 		</classes>
 	</test>
 	<test name="safariTest">
-	    <parameter name="browserType" value="safari" />
+		<parameter name="browserType" value="safari" />
 		<classes>
-			<class name="com.jukin.test.JukinMediaLoginTest" />
-			<class name="com.jukin.test.JukinMediaFormStyleValidationTest" />
-			<class name="com.jukin.test.JukinMediaFormValidationTest" />
-			<class name="com.jukin.test.JukinMediaPopUpTest" />
-			<class name="com.jukin.test.JukinMediaPopUpEmailTest" />
+			<class name="com.jukin.test.LoginTest" />
+			<class name="com.jukin.test.HomePageStyleTest" />
+			<class name="com.jukin.test.HomePageTest" />
+			<class name="com.jukin.test.SignUpPopUpStyleTest" />
+			<class name="com.jukin.test.SignUpPopUpTest" />
 		</classes>
 	</test>
 </suite>

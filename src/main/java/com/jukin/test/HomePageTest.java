@@ -10,28 +10,50 @@ import org.openqa.selenium.support.Color;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import com.jukin.pageobjects.JukinMediaHomePage;
 import com.jukin.pageobjects.JukinMediaLogin;
 import com.jukin.pageobjects.JukinMediaPopup;
 import com.jukin.test.base.TestBaseSetup;
 
-public class JukinMediaFormValidationTest extends TestBaseSetup {
+public class HomePageTest extends TestBaseSetup {
 
 	private WebDriver driver;
 	JukinMediaHomePage jukinMediaHomePage;
 	JukinMediaPopup jukinMediaPopup;
-
+	private SoftAssert softAssert ;
+	
 	@BeforeClass
 	public void setUp() {
 		driver = getDriver();
 		JukinMediaLogin loginPage = new JukinMediaLogin(driver);
-		loginPage.loginToJukinMedia("jukinmedia", "qatest");
+		loginPage.login("jukinmedia", "qatest");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		jukinMediaHomePage = new JukinMediaHomePage(driver);
 	}
-
+	
 	@Test(priority = 0)
+	public void validateMailingListMouseHover() {
+
+		softAssert = new SoftAssert();
+		Color beforHoverColor = Color.fromString(jukinMediaHomePage
+				.getMailingListColor());
+		String beforHoverColorCode = beforHoverColor.asHex();
+		softAssert.assertEquals(beforHoverColorCode, "#ffffff");
+
+		Actions action = new Actions(driver);
+		action.moveToElement(jukinMediaHomePage.getMailingList()).perform();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		Color afterHoverColor = Color.fromString(jukinMediaHomePage
+				.getMailingListColor());
+		String afterHoverColorCode = afterHoverColor.asHex();
+		softAssert.assertEquals(afterHoverColorCode, "#ffff00");
+		softAssert.assertAll();
+
+	}
+	
+	@Test(priority = 2)
 	public void submitBlankForm() {
 		jukinMediaHomePage.clickSubmit();
 		assertEquals(jukinMediaHomePage.getPhoneError(),
@@ -46,44 +68,9 @@ public class JukinMediaFormValidationTest extends TestBaseSetup {
 		Assert.assertTrue(jukinMediaHomePage.verifySubmitButton());
 	}
 
-	@Test(priority = 1)
-	public void getCssValue_ButtonColor() {
+	
 
-		Color beforHoverColor = Color.fromString(jukinMediaHomePage
-				.getMailingListColor());
-		String beforHoverColorCode = beforHoverColor.asHex();
-		System.out.println("Color of a link before mouse hover: "
-				+ beforHoverColorCode);
+	
 
-		Actions action = new Actions(driver);
-		action.moveToElement(jukinMediaHomePage.getMailingList()).perform();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		Color afterHoverColor = Color.fromString(jukinMediaHomePage
-				.getMailingListColor());
-		String afterHoverColorCode = afterHoverColor.asHex();
-		System.out.println("Color of a link after mouse hover : "
-				+ afterHoverColorCode);
-
-	}
-
-	@Test
-	public void verifyPopUpCloseBtn() {
-		jukinMediaHomePage.clickMailingList();
-		jukinMediaPopup = new JukinMediaPopup(driver);
-		Assert.assertTrue(jukinMediaPopup.verifyOnPopUp());
-		jukinMediaPopup.clickCloseBtn();
-		Assert.assertTrue(jukinMediaHomePage.verifyOnHomePage());
-
-	}
-
-	@Test
-	public void verifyPopUpSignUpBtn() {
-		jukinMediaHomePage.clickMailingList();
-		jukinMediaPopup = new JukinMediaPopup(driver);
-		Assert.assertTrue(jukinMediaPopup.verifyOnPopUp());
-		jukinMediaPopup.clickSignupBtn();
-		Assert.assertTrue(jukinMediaHomePage.verifyOnHomePage());
-
-	}
-
+	
 }

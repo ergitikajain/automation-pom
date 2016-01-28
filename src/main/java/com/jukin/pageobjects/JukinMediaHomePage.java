@@ -24,7 +24,7 @@ public class JukinMediaHomePage {
 	@FindBy(xpath = "//h1[contains(text(),'ACME')]")
 	WebElement companyName;
 
-	@FindBy(className = "pointer")
+	@FindBy(xpath = "//span[text()='Mailing']"/* "//a[contains(text(),'List')]" */)
 	WebElement mailingList;
 
 	@FindBy(xpath = "//label[contains(text(),'How did you')]")
@@ -131,6 +131,9 @@ public class JukinMediaHomePage {
 
 	@FindBy(xpath = "//button[text()='Submit']")
 	WebElement submitButton;
+
+	@FindBy(xpath = "//button[text()='Submit']/ancestor::div[1]")
+	WebElement submitButtonAlign;
 
 	public JukinMediaHomePage(WebDriver driver) {
 		this.driver = driver;
@@ -271,6 +274,10 @@ public class JukinMediaHomePage {
 
 	public String getOtherRequired() {
 		return WebElementHelper.getRequired(other);
+	}
+
+	public String getOtherDisable() {
+		return WebElementHelper.getDisabled(other);
 	}
 
 	public String getRateYourExperienceText() {
@@ -501,8 +508,8 @@ public class JukinMediaHomePage {
 		return WebElementHelper.getFontFamily(submitButton);
 	}
 
-	public String getSubmitTextAlign() {
-		return WebElementHelper.getTextAlign(submitButton);
+	public String getSubmitBtnAlign() {
+		return WebElementHelper.getBtnAlign(submitButtonAlign);
 	}
 
 	public void clickSubmit() {
@@ -512,16 +519,13 @@ public class JukinMediaHomePage {
 	public void clickMailingList() {
 		this.mailingList.click();
 	}
-	
+
 	public boolean verifyOnHomePage() {
-		return getCompanyNameText()
-				.contains("ACME");
+		return getCompanyNameText().contains("ACME");
 	}
 
-
 	public String getPhoneError() {
-		WebElement phoneError = driver.findElement(By
-				.xpath("//p[@class='phoneError']"));
+		WebElement phoneError = driver.findElement(By.xpath("//p[@class='phoneError']"));
 		return phoneError.getText();
 	}
 
@@ -536,8 +540,7 @@ public class JukinMediaHomePage {
 	}
 
 	public boolean verifySubmitButton() {
-		WebElement sucessPopUp = driver.findElement(By
-				.xpath("//h1[contains(text(),'successfully')]"));
+		WebElement sucessPopUp = driver.findElement(By.xpath("//h1[contains(text(),'successfully')]"));
 		System.out.println(sucessPopUp.getText());
 		return true;
 	}
