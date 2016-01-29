@@ -73,8 +73,11 @@ public class JukinMediaPopup {
 	public String getSignUpEmailMaxLength() {
 		return WebElementHelper.getMaxLength(signUpEmailTextbox);
 	}
-
+	public String getSignUpEmailBoxShadow() {
+		return WebElementHelper.getBoxShadow(signUpEmailTextbox);
+	}
 	public void setSignUpEmail(String emailAddress) {
+		signUpEmailTextbox.clear();
 		signUpEmailTextbox.sendKeys(emailAddress);
 	}
 
@@ -110,8 +113,26 @@ public class JukinMediaPopup {
 		signUpBtn.click();
 	}
 
+	public void clickCertifyCheckBox() {
+		certifyCheckbox.click();
+	}
+
 	public boolean verifyOnPopUp() {
 		return getSignUpLabelText().contains("Sign Up");
+	}
+
+	public boolean verifyOnHomePage() {
+		try {
+			getSignUpLabelText().contains("Sign Up");
+			return false;
+		} catch (Exception e) {
+			return true;
+
+		}
+	}
+
+	public String getSignUpEmailWidth() {
+		return WebElementHelper.getWidth(this.signUpEmailTextbox);
 	}
 
 }

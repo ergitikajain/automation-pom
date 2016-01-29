@@ -1,8 +1,11 @@
 package com.jukin.pageobjects;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -24,6 +27,9 @@ public class JukinMediaHomePage {
 	@FindBy(xpath = "//h1[contains(text(),'ACME')]")
 	WebElement companyName;
 
+	@FindBy(xpath = "//p[contains(text(),'ACME')]/preceding-sibling::h1[1]")
+	WebElement companyNameAboveCompanyMoto;
+	
 	@FindBy(xpath = "//span[text()='Mailing']"/* "//a[contains(text(),'List')]" */)
 	WebElement mailingList;
 
@@ -156,6 +162,10 @@ public class JukinMediaHomePage {
 		return WebElementHelper.getFontSize(companyMoto);
 	}
 
+	public boolean isComapanyMotoBelowComanyName() {
+		return companyNameAboveCompanyMoto.isDisplayed(); 
+	}
+
 	public String getCompanyMotoFontFamily() {
 		return WebElementHelper.getFontFamily(companyMoto);
 	}
@@ -271,7 +281,9 @@ public class JukinMediaHomePage {
 	public String getOtherMaxLength() {
 		return WebElementHelper.getMaxLength(other);
 	}
-
+	public String getOtherBoxShadow() {
+		return WebElementHelper.getBoxShadow(other);
+	}
 	public String getOtherRequired() {
 		return WebElementHelper.getRequired(other);
 	}
@@ -416,6 +428,9 @@ public class JukinMediaHomePage {
 		return WebElementHelper.getTextAlign(firstNameTextbox);
 	}
 
+	public String getFirstNameBoxShadow() {
+		return WebElementHelper.getBoxShadow(firstNameTextbox);
+	}
 	public String getFirstNameMaxLength() {
 		return WebElementHelper.getMaxLength(firstNameTextbox);
 	}
@@ -447,7 +462,9 @@ public class JukinMediaHomePage {
 	public String getLastNameRequired() {
 		return WebElementHelper.getRequired(lastNameTextbox);
 	}
-
+	public String getLastNameBoxShadow() {
+		return WebElementHelper.getBoxShadow(lastNameTextbox);
+	}
 	public String getEmailGhostText() {
 		return WebElementHelper.getTextboxPlaceholder(emailTextbox);
 	}
@@ -458,6 +475,9 @@ public class JukinMediaHomePage {
 
 	public String getEmailFontFamily() {
 		return WebElementHelper.getFontFamily(emailTextbox);
+	}
+	public String getEmailBoxShadow() {
+		return WebElementHelper.getBoxShadow(emailTextbox);
 	}
 
 	public String getEmailTextAlign() {
@@ -490,6 +510,9 @@ public class JukinMediaHomePage {
 
 	public String getPhoneNumberMaxLength() {
 		return WebElementHelper.getMaxLength(phoneNumberTextbox);
+	}
+	public String getPhoneNumberShadow() {
+		return WebElementHelper.getBoxShadow(phoneNumberTextbox);
 	}
 
 	public String getPhoneNumberRequired() {
@@ -529,20 +552,192 @@ public class JukinMediaHomePage {
 		return phoneError.getText();
 	}
 
+	public void fillFormWithoutHowDidYouHearAbout() {
+		clickRate1Radio();
+		clickYesOption();
+		setFirstName("Jigs");
+		setLastName("varsada");
+		setEmail("test@gmail.com");
+		setPhoneNumber("898989");
+		clickSubmit();
+	}
+	
+	public void fillFormWithOutOtherText() {
+		otherRadioBtn.click();
+		clickRate1Radio();
+		clickYesOption();
+		setFirstName("Jigs");
+		setLastName("varsada");
+		setEmail("test@gmail.com");
+		setPhoneNumber("898989");
+		clickSubmit();
+	}
+	public void fillFormWithOtherText() {
+		otherRadioBtn.click();
+		other.sendKeys("ABC");
+		clickRate1Radio();
+		clickYesOption();
+		setFirstName("Jigs");
+		setLastName("varsada");
+		setEmail("test@gmail.com");
+		setPhoneNumber("898989");
+		clickSubmit();
+	}
+	
+	public void fillFormWithOutRate() {
+		clickAdvertisingRadio();
+		clickYesOption();
+		setFirstName("Jigs");
+		setLastName("varsada");
+		setEmail("test@gmail.com");
+		setPhoneNumber("898989");
+		clickSubmit();
+	}
+	public void fillFormWithNoRecommendationWithOutWhyNot() {
+		clickAdvertisingRadio();
+		clickRate1Radio();
+		noRadioBtn.click();
+		setFirstName("Jigs");
+		setLastName("varsada");
+		setEmail("test@gmail.com");
+		setPhoneNumber("898989");
+		clickSubmit();
+	}
+	
+	public void fillFormWithNoRecommendationWithWhyNot() {
+		clickAdvertisingRadio();
+		clickRate1Radio();
+		noRadioBtn.click();
+		reasoningTextarea.sendKeys("why not text area");
+		setFirstName("Jigs");
+		setLastName("varsada");
+		setEmail("test@gmail.com");
+		setPhoneNumber("898989");
+		clickSubmit();
+	}
+	
+	
+	public void fillFormWithOutFirstName() {
+		clickAdvertisingRadio();
+		clickRate1Radio();
+		clickYesOption();
+		setLastName("varsada");
+		setEmail("test@gmail.com");
+		setPhoneNumber("898989");
+		clickSubmit();
+	}
+	public void fillFormWithoutLastName() {
+		clickAdvertisingRadio();
+		clickRate1Radio();
+		clickYesOption();
+		setFirstName("Jigs");
+		setEmail("test@gmail.com");
+		setPhoneNumber("898989");
+		clickSubmit();
+	}
+	public void fillFormWithOutEmail() {
+		clickAdvertisingRadio();
+		clickRate1Radio();
+		clickYesOption();
+		setFirstName("Jigs");
+		setLastName("varsada");
+		setPhoneNumber("898989");
+		clickSubmit();
+	}
+	public void fillFormPhoneNumber() {
+		clickAdvertisingRadio();
+		clickRate1Radio();
+		clickYesOption();
+		setFirstName("Jigs");
+		setLastName("varsada");
+		setEmail("test@gmail.com");
+		clickSubmit();
+	}
+
+	public void fillFormInvalidPhoneNumber() {
+		clickAdvertisingRadio();
+		clickRate1Radio();
+		clickYesOption();
+		setFirstName("Jigs");
+		setLastName("varsada");
+		setEmail("test@gmail.com");
+		setPhoneNumber("AFSDGDS");
+		clickSubmit();
+	}
+	
 	public void fillForm() {
-		advertisingRadioBtn.click();
-		rate1RadioBtn.click();
-		yesRadioBtn.click();
-		firstNameTextbox.sendKeys("Jigs");
-		lastNameTextbox.sendKeys("varsada");
+		clickAdvertisingRadio();
+		clickRate1Radio();
+		clickYesOption();
+		setFirstName("Jigs");
+		setLastName("varsada");
+		setEmail("test@gmail.com");
+		setPhoneNumber("898989");
+		clickSubmit();
+	}
+
+	private void setPhoneNumber(String phoneNum) {
+		phoneNumberTextbox.clear();
+		phoneNumberTextbox.sendKeys(phoneNum);
+	}
+
+	private void setEmail(String email) {
+		emailTextbox.clear();
 		emailTextbox.sendKeys("test@gmail.com");
-		phoneNumberTextbox.sendKeys("898989");
 	}
 
-	public boolean verifySubmitButton() {
-		WebElement sucessPopUp = driver.findElement(By.xpath("//h1[contains(text(),'successfully')]"));
-		System.out.println(sucessPopUp.getText());
-		return true;
+	private void setLastName(String lastName) {
+		lastNameTextbox.clear();
+		lastNameTextbox.sendKeys(lastName);
 	}
 
+	private void setFirstName(String firstName) {
+		firstNameTextbox.clear();
+		firstNameTextbox.sendKeys(firstName);
+	}
+
+	private void clickYesOption() {
+		yesRadioBtn.click();
+	}
+
+	private void clickRate1Radio() {
+		rate1RadioBtn.click();
+	}
+
+	private void clickAdvertisingRadio() {
+		advertisingRadioBtn.click();
+	}
+	
+	public boolean verifySubmitSuccess() {
+		try {
+			WebElement sucessPopUp = driver.findElement(By.xpath("//h1[contains(text(),'successfully')]"));
+			return sucessPopUp.isDisplayed();
+		} catch (Exception e) {
+			return true;
+		}
+		
+	}
+	
+	public void closeSuccessPopup() {
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		WebElement doneBtn = driver.findElement(By.xpath("//span[text()='×']/ancestor::button[1]"));
+		doneBtn.click();
+	}
+
+	public boolean verifySubmitFailure() {
+		try {
+			WebElement sucessPopUp = driver.findElement(By.xpath("//h1[contains(text(),'successfully')]"));
+			return sucessPopUp==null;
+		} catch (Exception e) {
+			return true;
+
+		}
+	}
+	
+	public void hoverOverMailingList() {
+		Actions action = new Actions(driver);
+		action.moveToElement(this.mailingList).perform();
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+	}
+	
 }

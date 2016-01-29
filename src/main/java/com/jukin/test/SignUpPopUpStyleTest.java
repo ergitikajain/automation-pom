@@ -24,10 +24,10 @@ public class SignUpPopUpStyleTest extends TestBaseSetup {
 	public void setUp() {
 		driver = getDriver();
 		JukinMediaLogin loginPage = new JukinMediaLogin(driver);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		loginPage.login("jukinmedia", "qatest");
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		jukinMediaForm = new JukinMediaHomePage(driver);
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		jukinMediaForm.clickMailingList();
 		jukinMediaPopup = new JukinMediaPopup(driver);
 		
@@ -55,7 +55,9 @@ public class SignUpPopUpStyleTest extends TestBaseSetup {
 				.contains(arialFont));
 		softAssert.assertEquals(jukinMediaPopup.getSignUpEmailFontSize(), "14px");
 		softAssert.assertEquals(jukinMediaPopup.getSignUpEmailTextAlign(), "start");
+		softAssert.assertEquals(jukinMediaPopup.getSignUpEmailWidth(), "568.4px");
 		softAssert.assertEquals(jukinMediaPopup.getSignUpEmailMaxLength(), "255");
+		softAssert.assertNotEquals(jukinMediaPopup.getSignUpEmailBoxShadow(), "none");
 		softAssert.assertAll();
 	}
 

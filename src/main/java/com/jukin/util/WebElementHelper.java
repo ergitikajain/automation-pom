@@ -20,6 +20,10 @@ public class WebElementHelper {
 		return webElement.getCssValue("text-align");
 	}
 	
+	public static String getWidth(WebElement webElement) {
+		return webElement.getCssValue("width");
+	}
+	
 	public static String getTextboxPlaceholder(WebElement webElement) {
 		return webElement.getAttribute("placeholder");
 	}
@@ -40,6 +44,10 @@ public class WebElementHelper {
 		return webElement.getAttribute("maxlength");
 	}
 	
+	public static String getPattern(WebElement webElement) {
+		return webElement.getAttribute("pattern");
+	}
+	
 	public static String getRequired(WebElement webElement) {
 		return webElement.getAttribute("required");
 	}
@@ -50,5 +58,7 @@ public class WebElementHelper {
 	public static String getColor(WebElement webElement) {
 		return webElement.getCssValue("color");
 	}
-	
+	public static String getBoxShadow(WebElement webElement) {
+		return webElement.getCssValue("box-shadow");
+	}
 }

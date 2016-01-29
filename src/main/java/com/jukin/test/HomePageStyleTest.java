@@ -24,8 +24,8 @@ public class HomePageStyleTest extends TestBaseSetup {
 	public void setUp() {
 		driver = getDriver();
 		JukinMediaLogin loginPage = new JukinMediaLogin(driver);
-		loginPage.login("jukinmedia", "qatest");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		loginPage.login("jukinmedia", "qatest");
 		jukinMediaForm = new JukinMediaHomePage(driver);
 	}
 
@@ -97,6 +97,7 @@ public class HomePageStyleTest extends TestBaseSetup {
 		softAssert.assertTrue(jukinMediaForm.getOtherRadioBtn().isSelected());
 		softAssert.assertEquals(jukinMediaForm.getOtherRequired(), "true");
 		softAssert.assertEquals(jukinMediaForm.getOtherMaxLength(), "32");
+		softAssert.assertNotEquals(jukinMediaForm.getOtherBoxShadow(), "none");
 		softAssert.assertAll();
 	}
 	
@@ -184,6 +185,7 @@ public class HomePageStyleTest extends TestBaseSetup {
 		softAssert.assertEquals(jukinMediaForm.getFirstNameTextAlign(), "start");
 		softAssert.assertEquals(jukinMediaForm.getFirstNameRequired(), "true");
 		softAssert.assertEquals(jukinMediaForm.getFirstNameMaxLength(), "32");
+		softAssert.assertNotEquals(jukinMediaForm.getFirstNameBoxShadow(), "none");
 		
 		softAssert.assertAll();
 	}
@@ -197,6 +199,7 @@ public class HomePageStyleTest extends TestBaseSetup {
 		softAssert.assertEquals(jukinMediaForm.getLastNameTextAlign(), "start");
 		softAssert.assertEquals(jukinMediaForm.getLastNameRequired(), "true");
 		softAssert.assertEquals(jukinMediaForm.getLastNameMaxLength(), "32");
+		softAssert.assertNotEquals(jukinMediaForm.getLastNameBoxShadow(), "none");
 		softAssert.assertAll();
 	}
 	
@@ -209,6 +212,7 @@ public class HomePageStyleTest extends TestBaseSetup {
 		softAssert.assertEquals(jukinMediaForm.getEmailTextAlign(), "start");
 		softAssert.assertEquals(jukinMediaForm.getEmailRequired(), "true");
 		softAssert.assertEquals(jukinMediaForm.getEmailMaxLength(), "32");
+		softAssert.assertNotEquals(jukinMediaForm.getEmailBoxShadow(), "none");
 		softAssert.assertAll();
 	}
 	
@@ -221,6 +225,7 @@ public class HomePageStyleTest extends TestBaseSetup {
 		softAssert.assertEquals(jukinMediaForm.getPhoneNumberTextAlign(), "start");
 		softAssert.assertEquals(jukinMediaForm.getPhoneNumberRequired(), "true");
 		softAssert.assertEquals(jukinMediaForm.getPhoneNumberMaxLength(), "32");
+		softAssert.assertNotEquals(jukinMediaForm.getPhoneNumberShadow(), "none");
 		softAssert.assertAll();
 	}
 	
