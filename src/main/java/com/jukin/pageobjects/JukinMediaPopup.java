@@ -118,7 +118,11 @@ public class JukinMediaPopup {
 	}
 
 	public boolean verifyOnPopUp() {
-		return getSignUpLabelText().contains("Sign Up");
+		try {
+			return getSignUpLabelText().contains("Sign Up");
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 	public boolean verifyOnHomePage() {

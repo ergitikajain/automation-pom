@@ -9,6 +9,7 @@ import org.openqa.selenium.support.Color;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -32,6 +33,7 @@ public class HomePageTest extends TestBaseSetup {
 		loginPage.login("jukinmedia", "qatest");
 		jukinMediaHomePage = new JukinMediaHomePage(driver);
 	}
+	
 	
 	@Test
 	public void verifyCompanyMotoPosition() {
@@ -77,67 +79,75 @@ public class HomePageTest extends TestBaseSetup {
 	
 	@Test(priority = 2)
 	public void submitFormWithoutHowDidYouHearAbout() {
+		driver.navigate().refresh();
 		jukinMediaHomePage.fillFormWithoutHowDidYouHearAbout();
 		Assert.assertTrue(jukinMediaHomePage.verifySubmitSuccess(), "Social media is not selected by default");
-		jukinMediaHomePage.closeSuccessPopup();
 	}
 	@Test(priority = 3)
 	public void submitFormWithOutOtherText() {
+		driver.navigate().refresh();
 		jukinMediaHomePage.fillFormWithOutOtherText();
 		Assert.assertTrue(jukinMediaHomePage.verifySubmitFailure(), "Other text required validation failed");
 	}
 	@Test(priority = 4)
 	public void submitFormWithOtherText() {
+		driver.navigate().refresh();
 		jukinMediaHomePage.fillFormWithOtherText();
 		Assert.assertTrue(jukinMediaHomePage.verifySubmitSuccess(), "Submit button not working");
-		jukinMediaHomePage.closeSuccessPopup();
 	}
 	@Test(priority = 5)
 	public void submitFormWithOutRate() {
+		driver.navigate().refresh();
 		jukinMediaHomePage.fillFormWithOutRate();
 		Assert.assertTrue(jukinMediaHomePage.verifySubmitFailure(), "rate required validation failed");
-		jukinMediaHomePage.closeSuccessPopup();
 	}
 	@Test(priority = 6)
 	public void submitFormWithNoRecommendationWithOutWhyNot() {
+		driver.navigate().refresh();
 		jukinMediaHomePage.fillFormWithNoRecommendationWithOutWhyNot();
 		Assert.assertTrue(jukinMediaHomePage.verifySubmitFailure(), "why not required validation failed");
 	}
 	@Test(priority = 7)
 	public void submitFormWithNoRecommendationWithWhyNot() {
+		driver.navigate().refresh();
 		jukinMediaHomePage.fillFormWithNoRecommendationWithWhyNot();
 		Assert.assertTrue(jukinMediaHomePage.verifySubmitSuccess(), "Submit button not working" );
-		jukinMediaHomePage.closeSuccessPopup();
 	}
 	@Test(priority = 8)
 	public void submitFormWithOutFirstName() {
+		driver.navigate().refresh();
 		jukinMediaHomePage.fillFormWithOutFirstName();
 		Assert.assertTrue(jukinMediaHomePage.verifySubmitFailure(), "First name required validation failed");
 	}
 	@Test(priority = 9)
 	public void submitFormWithOutLastName() {
+		driver.navigate().refresh();
 		jukinMediaHomePage.fillFormWithoutLastName();
 		Assert.assertTrue(jukinMediaHomePage.verifySubmitFailure(), "Last name required validation failed");
 	}
 	@Test(priority = 10)
 	public void submitFormWithOutEmail() {
+		driver.navigate().refresh();
 		jukinMediaHomePage.fillFormWithOutEmail();
 		Assert.assertTrue(jukinMediaHomePage.verifySubmitFailure(), "Email required validation failed");
 	}
 
 	@Test(priority = 11)
 	public void submitFormWithOutPhone() {
+		driver.navigate().refresh();
 		jukinMediaHomePage.fillFormPhoneNumber();
 		Assert.assertTrue(jukinMediaHomePage.verifySubmitFailure(), "Phone required validation failed");
 	}
 
 	@Test(priority = 12)
 	public void submitFormWithInvalidPhone() {
+		driver.navigate().refresh();
 		jukinMediaHomePage.fillFormInvalidPhoneNumber();
 		Assert.assertTrue(jukinMediaHomePage.verifySubmitFailure(), "Phone number validation failed");
 	}
 	@Test(priority = 13)
 	public void submitFilledForm() {
+		driver.navigate().refresh();
 		jukinMediaHomePage.fillForm();
 		Assert.assertTrue(jukinMediaHomePage.verifySubmitSuccess());
 		jukinMediaHomePage.closeSuccessPopup();

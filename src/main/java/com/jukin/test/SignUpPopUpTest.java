@@ -114,6 +114,7 @@ public class SignUpPopUpTest extends TestBaseSetup {
 	public void validateInvalidEmailAddress(String[] invalidEmailAddress) {
 		softAssert = new SoftAssert();
 		for (String email : invalidEmailAddress) {
+			driver.navigate().refresh();
 			initializePopUp();
 			System.out.println("Entering email..." + email);
 
@@ -138,6 +139,7 @@ public class SignUpPopUpTest extends TestBaseSetup {
 
 		softAssert = new SoftAssert();
 		for (String email : validEmailAddress) {
+			driver.navigate().refresh();
 			initializePopUp();
 			System.out.println("Entering email..." + email);
 

@@ -30,7 +30,7 @@ public class JukinMediaHomePage {
 	@FindBy(xpath = "//p[contains(text(),'ACME')]/preceding-sibling::h1[1]")
 	WebElement companyNameAboveCompanyMoto;
 	
-	@FindBy(xpath = "//span[text()='Mailing']"/* "//a[contains(text(),'List')]" */)
+	@FindBy(xpath = "//span[text()='Mailing']")
 	WebElement mailingList;
 
 	@FindBy(xpath = "//label[contains(text(),'How did you')]")
@@ -713,21 +713,26 @@ public class JukinMediaHomePage {
 			WebElement sucessPopUp = driver.findElement(By.xpath("//h1[contains(text(),'successfully')]"));
 			return sucessPopUp.isDisplayed();
 		} catch (Exception e) {
-			return true;
+			return false;
 		}
 		
 	}
 	
 	public void closeSuccessPopup() {
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		WebElement doneBtn = driver.findElement(By.xpath("//span[text()='×']/ancestor::button[1]"));
-		doneBtn.click();
+		try {
+			System.out.println("close pop up");
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			WebElement doneBtn = driver.findElement(By.xpath("//span[text()='×']/ancestor::button[1]"));
+			doneBtn.click();
+		} catch (Exception e) {
+
+		}
 	}
 
 	public boolean verifySubmitFailure() {
 		try {
 			WebElement sucessPopUp = driver.findElement(By.xpath("//h1[contains(text(),'successfully')]"));
-			return sucessPopUp==null;
+			return sucessPopUp == null;
 		} catch (Exception e) {
 			return true;
 
